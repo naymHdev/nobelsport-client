@@ -7,6 +7,8 @@
   --color-background: oklch(0.141 0.005 285.823);
   --font-bebas: var(--font-bebas);
   --font-openSans: var(--font-openSans);
+  --color-ns-primary: #007a33;
+  --color-ns-foreground: #4b5563;
 }
 
 @theme inline {
