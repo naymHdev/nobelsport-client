@@ -9,6 +9,15 @@
   --font-openSans: var(--font-openSans);
   --color-ns-primary: #007a33;
   --color-ns-foreground: #4b5563;
+  --color-ns-secondary: #1b5fee;
+  --color-ns-title: #333333;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 1.2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 @theme inline {
