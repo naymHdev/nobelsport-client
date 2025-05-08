@@ -50,3 +50,18 @@ export const venues = [
     ],
   },
 ];
+
+export const matchesData = [
+  {
+    _id: "1",
+    match_title: "5 VS 5 Football Match",
+    match_status: "Upcoming", // Upcoming, New, New, Almost Full
+    match_start_time: "12 March, 7:00 PM",
+    match_location: "Downtown Sports Center",
+    matches: "2",
+    ground_level: "Intermediate Level",
+    tournament_details: {
+      tournament_format: ["Round 1", "Quarter-Finals", "Semi-Finals", "Final"],
+    },
+  },
+];

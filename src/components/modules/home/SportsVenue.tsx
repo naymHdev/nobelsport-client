@@ -6,6 +6,7 @@ import NSSectionTitle from "@/components/ui/core/NSSectionTitle";
 import NSVenueCard from "@/components/ui/core/NSVenueCard";
 import { venues } from "@/data/data";
 import { TVenue } from "@/types/venue";
+import Link from "next/link";
 
 const SportsVenue = () => {
   const maltyVenues: TVenue[] | undefined = Array.from(
@@ -33,9 +34,11 @@ const SportsVenue = () => {
           </div>
 
           <div className=" flex items-center justify-center mt-14">
-            <NSButton className=" text-center text-ns-secondary font-openSans text-lg font-normal leading-normal border border-ns-secondary rounded-full px-[34px] py-[14px] bg-transparent">
-              View All Venues
-            </NSButton>
+            <Link href={"/venue"}>
+              <NSButton className=" text-center text-ns-secondary font-openSans text-lg font-normal leading-normal border border-ns-secondary rounded-full px-[34px] py-[14px] bg-transparent hover:bg-transparent ">
+                View All Venues
+              </NSButton>
+            </Link>
           </div>
         </NSContainer>
       </div>
