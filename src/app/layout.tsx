@@ -29,7 +29,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={` ${bebas.variable} ${openSans.variable} antialiased`}>
+      <body
+        className={` ${bebas.variable} ${openSans.variable} antialiased bg-[#F5F5F5]`}
+      >
         {children}
         <Toaster position="top-right" richColors />
       </body>

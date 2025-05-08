@@ -1,24 +1,27 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import Image from 'next/image';
-import { ChevronDown } from 'lucide-react';
+import { useState } from "react";
+import Image from "next/image";
+import { ChevronDown } from "lucide-react";
+import bd from "../assets/icons/bangladesh.png";
+import usa from "../assets/icons/usa-flag.png";
+import fr from "../assets/icons/france.png";
 
 const languages = [
   {
-    code: 'en',
-    name: 'English',
-    flag: '/flags/us.png', // Place flag images in the public/flags folder
+    code: "en",
+    name: "English",
+    flag: usa,
   },
   {
-    code: 'bd',
-    name: 'বাংলা',
-    flag: '/flags/bd.png',
+    code: "bd",
+    name: "বাংলা",
+    flag: bd,
   },
   {
-    code: 'fr',
-    name: 'Français',
-    flag: '/flags/fr.png',
+    code: "fr",
+    name: "Français",
+    flag: fr,
   },
 ];
 
@@ -27,24 +30,24 @@ const LanguageSelector = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="relative inline-block text-left">
+    <div className="relative inline-block text-left ">
       <button
         onClick={() => setOpen(!open)}
-        className="flex items-center gap-2 border px-3 py-1.5 rounded-md bg-white hover:bg-gray-100"
+        className="flex items-center gap-2 border px-3 py-1.5 border-none w-[133px] h-[29px]"
       >
         <Image
           src={selected.flag}
           alt={selected.name}
           width={20}
           height={15}
-          className="rounded-sm"
+          className="rounded-sm "
         />
         <span className="text-sm">{selected.name}</span>
         <ChevronDown size={16} />
       </button>
 
       {open && (
-        <div className="absolute z-50 mt-2 w-40 bg-white border rounded shadow-md">
+        <div className="absolute z-50 mt-2">
           {languages.map((lang) => (
             <button
               key={lang.code}

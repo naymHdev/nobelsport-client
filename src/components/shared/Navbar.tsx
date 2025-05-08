@@ -2,12 +2,13 @@
 
 import Link from "next/link";
 import NSContainer from "../ui/core/NSContainer";
-import TopBar from "./Topbar";
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
 import NSButton from "../ui/core/NSButton";
-import Image from "next/image";
 import Locations from "../Locations";
+import TopBar from "./TopBar";
+import logo from "../../assets/images/nb-sport-logo.png";
+import Image from "next/image";
 
 const Navbar = () => {
   const pathname = usePathname();
@@ -21,10 +22,12 @@ const Navbar = () => {
   return (
     <>
       <TopBar />
-      <div className=" border py-8 w-full">
+      <div className=" w-full h-[72px]">
         <NSContainer>
           <div className=" flex items-center justify-between">
-            <div className=" font-bold font-openSans text-3xl">Logo</div>
+            <div className="w-[60px] h-[60px]">
+              <Image src={logo} alt="Logo" className="w-[60px] h-[60px]" />
+            </div>
             <div className=" flex items-center gap-4 font-normal text-lg font-openSans">
               {navLinks.map(({ href, label }) => (
                 <Link
