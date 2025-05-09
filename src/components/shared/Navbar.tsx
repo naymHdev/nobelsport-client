@@ -22,9 +22,9 @@ const Navbar = () => {
   return (
     <>
       <TopBar />
-      <div className=" w-full h-[72px]">
+      <div className=" w-full h-[75px]">
         <NSContainer>
-          <div className=" flex items-center justify-between">
+          <div className="mt-2 flex items-center justify-between">
             <div className="w-[60px] h-[60px]">
               <Image src={logo} alt="Logo" className="w-[60px] h-[60px]" />
             </div>
