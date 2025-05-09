@@ -1,4 +1,6 @@
 import sport1 from "../assets/images/sport1.png";
+import tp1 from "../assets/images/tp1.png";
+import tp2 from "../assets/images/tp2.png";
 
 export const venues = [
   {
@@ -63,5 +65,17 @@ export const matchesData = [
     tournament_details: {
       tournament_format: ["Round 1", "Quarter-Finals", "Semi-Finals", "Final"],
     },
+  },
+];
+
+export const testimonialsData = [
+  {
+    _id: "1",
+    profile_img: tp1,
+    name: "Jake Thompson",
+    gender: "Male",
+    player_experience: "“Weekly Matches, Zero Hassle!”",
+    comment:
+      "NobleSport helped me find pickup football games in my area. I’ve played every weekend since joining!",
   },
 ];

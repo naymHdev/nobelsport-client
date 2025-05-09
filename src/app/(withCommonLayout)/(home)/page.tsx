@@ -1,6 +1,7 @@
 import Banner from "@/components/modules/home/Banner";
 import JoinOurSiteSection from "@/components/modules/home/JoinTheMatch";
 import SportsVenue from "@/components/modules/home/SportsVenue";
+import Testimonials from "@/components/modules/home/Testimonial/Testimonials";
 import ThreeSteps from "@/components/modules/home/ThreeSteps";
 
 export default function Home() {
@@ -11,6 +12,7 @@ export default function Home() {
         <SportsVenue />
         <JoinOurSiteSection />
         <ThreeSteps />
+        <Testimonials />
       </div>
     </>
   );
