@@ -23,7 +23,7 @@ const NSButton: React.FC<NSButtonProps> = ({
       onClick={onClick}
       className={cn(
         "px-6 py-2 rounded-full font-semibold transition-all duration-200 hover:cursor-pointer",
-        "bg-green-600 text-white hover:bg-green-700 disabled:bg-gray-400 disabled:cursor-not-allowed",
+        "bg-green-600 text-white  disabled:bg-gray-400 disabled:cursor-not-allowed",
         className
       )}
     >

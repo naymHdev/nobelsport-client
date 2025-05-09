@@ -35,7 +35,7 @@ const SportsVenue = () => {
 
           <div className=" flex items-center justify-center mt-14">
             <Link href={"/venue"}>
-              <NSButton className=" text-center text-ns-secondary font-openSans text-lg font-normal leading-normal border border-ns-secondary rounded-full px-[34px] py-[14px] bg-transparent hover:bg-transparent ">
+              <NSButton className=" text-center text-ns-secondary font-openSans text-lg font-normal leading-normal border-2 border-ns-secondary rounded-full px-[34px] py-[14px] bg-transparent hover:bg-transparent ">
                 View All Venues
               </NSButton>
             </Link>
