@@ -7,7 +7,7 @@ import clsx from "clsx";
 import Link from "next/link";
 
 const NSMatchCard = ({ match }: { match: TMatchData }) => {
-  console.log(match);
+  // console.log(match);
 
   return (
     <>
