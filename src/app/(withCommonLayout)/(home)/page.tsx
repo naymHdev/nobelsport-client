@@ -1,4 +1,5 @@
 import Banner from "@/components/modules/home/Banner";
+import JoinNowBanner from "@/components/modules/home/JoinNowBanner";
 import JoinOurSiteSection from "@/components/modules/home/JoinTheMatch";
 import SportsVenue from "@/components/modules/home/SportsVenue";
 import Testimonials from "@/components/modules/home/Testimonial/Testimonials";
@@ -13,6 +14,7 @@ export default function Home() {
         <JoinOurSiteSection />
         <ThreeSteps />
         <Testimonials />
+        <JoinNowBanner />
       </div>
     </>
   );
