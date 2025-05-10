@@ -1,7 +1,10 @@
-import VenueComponents from "@/components/modules/venue";
+"use client";
+
 import NSContainer from "@/components/ui/core/NSContainer";
 import cover from "@/assets/images/venue-cover.png";
 import Image from "next/image";
+import TopRatedVenues from "@/components/modules/venue/TopRatedVenues";
+import VenueFilter from "@/components/modules/venue";
 
 const VenuePage = () => {
   return (
@@ -21,7 +24,8 @@ const VenuePage = () => {
           Perfect for Every Sport and Skill Level
         </h1>
         <NSContainer className="relative z-10 -mt-36">
-          <VenueComponents />
+          <VenueFilter />
+          <TopRatedVenues />
         </NSContainer>
       </div>
     </>

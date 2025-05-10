@@ -12,11 +12,9 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import React from "react";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -28,7 +26,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import NSButton from "@/components/ui/core/NSButton";
-const VenueComponents = () => {
+const VenueFilter = () => {
   const form = useForm();
 
   return (
@@ -175,4 +173,4 @@ const VenueComponents = () => {
   );
 };
 
-export default VenueComponents;
+export default VenueFilter;

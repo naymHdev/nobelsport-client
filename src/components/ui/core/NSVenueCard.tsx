@@ -23,9 +23,11 @@ const NSVenueCard = ({ venue }: { venue: TVenue }) => {
             <div>
               <div className=" flex items-center justify-between">
                 <div>
-                  <h2 className=" text-xl font-sequel font-bold leading-5 text-ns-title">
-                    {venue.title}
-                  </h2>
+                  <Link href={`/venue/${venue._id}`}>
+                    <h2 className=" text-xl font-sequel font-bold leading-5 text-ns-title">
+                      {venue.title}
+                    </h2>
+                  </Link>
                 </div>
                 <div className=" flex items-center gap-0.5">
                   <FaStar className="w-[16px] h-[15.258px] text-[#FFC850]" />
