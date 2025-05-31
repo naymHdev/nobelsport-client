@@ -25,6 +25,7 @@ import { FaClock } from "react-icons/fa";
 import mapImg from "../../../assets/images/contact-map.png";
 import { ShareModal } from "./ShareModal";
 import { useEffect, useState } from "react";
+import NSNotifyModal from "@/components/ui/core/NSNotifyModal";
 
 const renderStars = (rating: number) => {
   return Array.from({ length: 5 }, (_, i) => (
@@ -70,6 +71,8 @@ const VenueDetails = ({ venueDetails }: { venueDetails: TVenue }) => {
   useEffect(() => {
     setUrl(window.location.href);
   }, []);
+
+  const user = false;
 
   return (
     <>
@@ -251,9 +254,20 @@ const VenueDetails = ({ venueDetails }: { venueDetails: TVenue }) => {
                     </div>
                   </div>
 
-                  <Button className="w-full bg-ns-secondary hover:cursor-pointer hover:bg-blue-700 text-white py-6 font-openSans">
-                    Book Now
-                  </Button>
+                  {user ? (
+                    <Button className="w-full bg-ns-secondary hover:cursor-pointer hover:bg-blue-700 text-white py-6 font-openSans">
+                      Book Now
+                    </Button>
+                  ) : (
+                    <NSNotifyModal
+                      className=" bg-ns-secondary"
+                      title="To order a Venue, please log in to your account."
+                    >
+                      <Button className="w-full bg-ns-secondary hover:cursor-pointer hover:bg-blue-700 text-white py-6 font-openSans">
+                        Book Now
+                      </Button>
+                    </NSNotifyModal>
+                  )}
                 </div>
               </CardContent>
             </Card>

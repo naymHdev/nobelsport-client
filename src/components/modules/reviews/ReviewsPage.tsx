@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Progress } from "@/components/ui/progress";
 import { Separator } from "@/components/ui/separator";
 import {
@@ -20,6 +19,7 @@ import NSButton from "@/components/ui/core/NSButton";
 import { MdOutlineStarPurple500 } from "react-icons/md";
 import profileAvatar from "../../../assets/images/review-vn.png";
 import Image from "next/image";
+import NSNotifyModal from "@/components/ui/core/NSNotifyModal";
 
 interface Review {
   id: string;
@@ -157,6 +157,8 @@ export function ReviewsPage({
     setNewReviewComment("");
   };
 
+  const user = false;
+
   return (
     <>
       <div className=" my-6">
@@ -166,9 +168,21 @@ export function ReviewsPage({
         <div className="flex items-end justify-end gap-4">
           <Dialog open={isWriteReviewOpen} onOpenChange={setIsWriteReviewOpen}>
             <DialogTrigger asChild>
-              <NSButton className="bg-gray-800 hover:bg-gray-900 text-white self-start sm:self-auto">
-                Write Review
-              </NSButton>
+              {user ? (
+                <NSButton className="bg-gray-800 hover:bg-gray-900 text-white self-start sm:self-auto">
+                  Write Review
+                </NSButton>
+              ) : (
+                <NSNotifyModal
+                  children={
+                    <NSButton className="bg-gray-800 hover:bg-gray-900 text-white self-start sm:self-auto">
+                      Write Review
+                    </NSButton>
+                  }
+                  title="To write a review, please log in to your account."
+                  buttonText="Log In to Your Account"
+                />
+              )}
             </DialogTrigger>
             <DialogContent className="sm:max-w-md">
               <DialogHeader>
