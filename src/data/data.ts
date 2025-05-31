@@ -1,15 +1,24 @@
-import sport1 from "../assets/images/sport1.png";
 import tp1 from "../assets/images/tp1.png";
-import tp2 from "../assets/images/tp2.png";
+import venue1 from "../assets/images/sport1.png";
+import venue2 from "../assets/images/venue2.png";
+import venue3 from "../assets/images/venue3.png";
+import venue4 from "../assets/images/venue4.png";
+import venue5 from "../assets/images/venue5.png";
+import venue6 from "../assets/images/venue6.png";
+import aboutImg from "../assets/images/venue-about.png";
+import vReview1 from "../assets/images/review-vn.png";
 
 export const venues = [
   {
     _id: "1",
     title: "The Football Factory",
     location: "New York, USA",
-    images: [sport1],
-    description:
-      "The Football Factory is Manchester's premier indoor football facility, featuring state-of-the-artartificial turf and professional-grade amenities. Re renovated in 2024, our venue offers an The Football Factory is Manchester's premier indoor football facility, featuring state-of-the-artartificial turf and professional-grade amenities. Recently renovated in 2024, our venue offers an",
+    images: [venue1, venue2, venue3, venue4, venue5, venue6],
+    about: {
+      image: aboutImg,
+      description:
+        "The Football Factory is Manchester's premier indoor football facility, featuring state-of-the-artartificial turf and professional-grade amenities. Re renovated in 2024, our venue offers an The Football Factory is Manchester's premier indoor football facility, featuring state-of-the-artartificial turf and professional-grade amenities. Recently renovated in 2024, our venue offers an",
+    },
     rating: 4.5,
     price: 100,
     bookingInfo: {
@@ -45,6 +54,7 @@ export const venues = [
       {
         userId: "1",
         name: "John Doe",
+        profileImg: vReview1,
         rating: 5,
         comment:
           "I had a great time at The Football Factory! The staff were friendly and the facilities were top-notch. Highly recommended!",

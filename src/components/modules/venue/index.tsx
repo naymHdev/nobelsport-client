@@ -47,7 +47,7 @@ const VenueFilter = () => {
               className="w-full pl-10 py-6"
             />
           </div>
-          <div className=" mt-6 flex items-center gap-4">
+          <div className=" mt-6 flex flex-col lg:flex-row items-center gap-4">
             {/* --------------- Match Fee filter -------------- */}
             <div className=" w-full">
               <Select>

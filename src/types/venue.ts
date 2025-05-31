@@ -3,7 +3,10 @@ export type TVenue = {
   title: string;
   location: string;
   images: string[];
-  description: string;
+  about: {
+    image: string;
+    description: string;
+  };
   rating: number;
   price: number;
   bookingInfo: {
@@ -23,6 +26,7 @@ export type TVenue = {
   }[];
   reviews: {
     userId: string;
+    profileImg: string | null;
     name: string;
     rating: number;
     comment: string;
