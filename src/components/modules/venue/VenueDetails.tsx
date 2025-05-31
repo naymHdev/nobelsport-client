@@ -4,19 +4,9 @@ import { TVenue } from "@/types/venue";
 import Image from "next/image";
 import Link from "next/link";
 import { FaLocationDot } from "react-icons/fa6";
-import { IoShareSocialOutline } from "react-icons/io5";
+import { IoCall } from "react-icons/io5";
 import { ImageGallery } from "./ImageGallery";
-import {
-  Calendar,
-  Clock,
-  MapPin,
-  Phone,
-  Star,
-  Users,
-  Car,
-  Coffee,
-  ShirtIcon,
-} from "lucide-react";
+import { Calendar, Users, Car, Coffee, ShirtIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
@@ -28,8 +18,14 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { MdCall, MdOutlineStarPurple500 } from "react-icons/md";
+import { MdOutlineStarPurple500 } from "react-icons/md";
 import { FaClock } from "react-icons/fa";
+
+// ------------------------- Static Data -------------------------
+import mapImg from "../../../assets/images/contact-map.png";
+import { ShareModal } from "./ShareModal";
+import { useEffect, useState } from "react";
+
 const renderStars = (rating: number) => {
   return Array.from({ length: 5 }, (_, i) => (
     <MdOutlineStarPurple500
@@ -54,6 +50,8 @@ const getAmenityIcon = (iconType: string) => {
 };
 
 const VenueDetails = ({ venueDetails }: { venueDetails: TVenue }) => {
+  const [url, setUrl] = useState("");
+
   const {
     title,
     location,
@@ -61,13 +59,17 @@ const VenueDetails = ({ venueDetails }: { venueDetails: TVenue }) => {
     about,
     rating,
     price,
-    bookingInfo,
     contactInfo,
     amenities,
     reviews,
+    _id,
   } = venueDetails || {};
 
   // console.log("venueDetails", reviews);
+
+  useEffect(() => {
+    setUrl(window.location.href);
+  }, []);
 
   return (
     <>
@@ -85,9 +87,7 @@ const VenueDetails = ({ venueDetails }: { venueDetails: TVenue }) => {
           </div>
         </div>
         <div>
-          <div className=" px-[14px] py-3 bg-[#FAFAFA] text-center">
-            <IoShareSocialOutline className=" size-6 text-ns-secondary" />
-          </div>
+          <ShareModal url={url} />
         </div>
       </section>
 
@@ -151,7 +151,7 @@ const VenueDetails = ({ venueDetails }: { venueDetails: TVenue }) => {
                 <CardTitle className=" text-2xl font-extrabold text-ns-title font-openSans">
                   Reviews
                 </CardTitle>
-                <Link href="#">
+                <Link href={{ pathname: "/all-reviews", query: { id: _id } }}>
                   <p className=" text-ns-secondary font-openSans text-center font-normal hover:underline">
                     See all 2,145 reviews
                   </p>
@@ -166,7 +166,7 @@ const VenueDetails = ({ venueDetails }: { venueDetails: TVenue }) => {
                           src={review?.profileImg || "/placeholder.svg"}
                         />
                         <AvatarFallback>
-                          {review.name
+                          {review?.name
                             .split(" ")
                             .map((n) => n[0])
                             .join("")}
@@ -174,17 +174,17 @@ const VenueDetails = ({ venueDetails }: { venueDetails: TVenue }) => {
                       </Avatar>
                       <div>
                         <p className="font-medium text-sm font-openSans text-ns-title">
-                          {review.name}
+                          {review?.name}
                         </p>
                         <div className="flex items-start gap-0.5 mt-1">
-                          {renderStars(review.rating)}
+                          {renderStars(review?.rating)}
                         </div>
                       </div>
                     </div>
                     <p className=" text-ns-foreground font-openSans text-sm leading-relaxed mt-3">
-                      {review.comment}
+                      {review?.comment}
                     </p>
-                    {index < reviews.length - 1 && (
+                    {index < reviews?.length - 1 && (
                       <Separator className="mt-4" />
                     )}
                   </div>
@@ -260,63 +260,61 @@ const VenueDetails = ({ venueDetails }: { venueDetails: TVenue }) => {
 
             {/* Contact & Location */}
             <Card className=" border-none shadow-none">
-              <CardHeader>
-                <CardTitle className=" text-xl text-ns-title font-openSans">
+              <CardContent className="font-openSans">
+                <h3 className=" text-xl text-ns-title font-openSans">
                   Contact & Location
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3 font-openSans">
-                <div className="flex items-start gap-3">
-                  <FaLocationDot className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
-                  <span className="text-sm text-black">
-                    {contactInfo.location}
-                  </span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <MdCall className="w-5 h-5 text-blue-600 flex-shrink-0" />
-                  <span className="text-sm text-black">
-                    {contactInfo.phone}
-                  </span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <FaClock className="w-5 h-5 text-blue-600 flex-shrink-0" />
-                  <span className="text-sm text-black">
-                    {contactInfo.openTime}
-                  </span>
-                </div>
+                </h3>
+                <div className=" space-y-4 mt-4">
+                  <div className="flex items-start gap-3">
+                    <FaLocationDot className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-black">
+                      {contactInfo?.location}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <IoCall className="w-5 h-5 text-blue-600 flex-shrink-0" />
+                    <span className="text-sm text-black">
+                      {contactInfo?.phone}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <FaClock className="w-5 h-5 text-blue-600 flex-shrink-0" />
+                    <span className="text-sm text-black">
+                      {contactInfo?.openTime}
+                    </span>
+                  </div>
 
-                {/* Stadium Map */}
-                {/* <div className="mt-4 rounded-lg overflow-hidden">
-                  <Image
-                    src="/placeholder.svg?height=200&width=300&text=Stadium+Map"
-                    alt="Stadium seating chart"
-                    width={300}
-                    height={200}
-                    className="w-full h-32 object-cover"
-                  />
-                </div> */}
+                  {/* Stadium Map */}
+                  <div className="rounded-lg overflow-hidden mt-5">
+                    <Image
+                      src={mapImg}
+                      alt="Stadium seating chart"
+                      width={600}
+                      height={600}
+                      className="w-full h-[350px] object-cover rounded-lg"
+                    />
+                  </div>
+                </div>
               </CardContent>
             </Card>
 
             {/* Available Times */}
             <Card className=" border-none shadow-none">
-              <CardHeader>
-                <CardTitle className="text-lg font-semibold">
-                  Available time
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-2">
-                {contactInfo?.availableTimes?.map((time, index) => (
-                  <div
-                    key={index}
-                    className="flex items-center gap-2 p-2 hover:bg-gray-50 rounded-md cursor-pointer"
-                  >
-                    <div className="">
-                      <FaClock className="w-5 h-5 text-blue-600 flex-shrink-0" />
+              <CardContent className="">
+                <h3 className="text-lg font-semibold">Available Times</h3>
+                <div className="mt-3 space-y-1">
+                  {contactInfo?.availableTimes?.map((time, index) => (
+                    <div
+                      key={index}
+                      className="flex items-center gap-2 p-2 hover:bg-gray-50 rounded-md cursor-pointer"
+                    >
+                      <div className="">
+                        <FaClock className="w-5 h-5 text-blue-600 flex-shrink-0" />
+                      </div>
+                      <span className="text-sm text-gray-700">{time}</span>
                     </div>
-                    <span className="text-sm text-gray-700">{time}</span>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </CardContent>
             </Card>
           </div>

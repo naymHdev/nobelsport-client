@@ -30,7 +30,11 @@ export const venues = [
       location: "123 Sport Street, Manchester, M1 1AB",
       phone: "+1 123 456 789",
       openTime: "9:00 AM - 10:00 PM",
-      availableTimes: ["9:00 AM", "10:00 AM", "11:00 AM"],
+      availableTimes: [
+        "March 25, 9:00 AM - 10:00 PM",
+        "March 25, 9:00 AM - 10:00 PM",
+        "March 25, 9:00 AM - 10:00 PM",
+      ],
     },
     amenities: [
       {
@@ -51,6 +55,22 @@ export const venues = [
       },
     ],
     reviews: [
+      {
+        userId: "1",
+        name: "John Doe",
+        profileImg: vReview1,
+        rating: 5,
+        comment:
+          "I had a great time at The Football Factory! The staff were friendly and the facilities were top-notch. Highly recommended!",
+      },
+      {
+        userId: "1",
+        name: "John Doe",
+        profileImg: vReview1,
+        rating: 5,
+        comment:
+          "I had a great time at The Football Factory! The staff were friendly and the facilities were top-notch. Highly recommended!",
+      },
       {
         userId: "1",
         name: "John Doe",
