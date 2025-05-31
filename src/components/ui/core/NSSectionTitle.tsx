@@ -12,30 +12,31 @@ const NSSectionTitle = ({
   subTitle,
 }: TSectionTitleProps) => {
   return (
-    <>
-      <div className=" flex flex-col items-center justify-center text-center w-7/12 mx-auto">
-        <div>
-          <h2 className="text-ns-secondary font-semibold text-[14px] leading-[17.14px] tracking-[3%] text-center uppercase font-open-sans">
-            {section}
-          </h2>
-        </div>
+    <div className="max-w-full px-4 sm:max-w-lg md:max-w-xl lg:max-w-3xl mx-auto flex flex-col items-center text-center">
+      {section && (
+        <h2 className="text-ns-secondary font-semibold uppercase font-open-sans
+          text-xs sm:text-sm lg:text-base tracking-[3%] leading-[1.2]">
+          {section}
+        </h2>
+      )}
 
-        <div className=" mt-[22px]">
-          <div className=" flex items-center justify-center text-center gap-2 font-bebas font-normal text-[70px] leading-[83.81px] tracking-normal capitalize">
-            <h1 className="text-transparent bg-gradient-to-br from-[#007A33] to-[#0032A0] bg-clip-text">
-              {leftTitle}
-            </h1>
+      <div className="mt-6 sm:mt-8 gap-2 lg:gap-4 text-center
+        font-bebas font-normal capitalize tracking-normal">
+        <h1 className="text-transparent bg-gradient-to-br from-[#007A33] to-[#0032A0] bg-clip-text
+          text-4xl sm:text-5xl lg:text-[70px] lg:leading-[83.81px]">
+          {leftTitle}
+        </h1>
 
-            <h1 className="text-transparent bg-gradient-to-br from-[#FFB81C] to-[#E03C31] bg-clip-text">
-              {rightTitle}
-            </h1>
-          </div>
-          <p className=" text-ns-foreground font-openSans text-base font-normal leading-[20.95px] tracking-[0px] text-center">
-            {subTitle}
-          </p>
-        </div>
+        <h1 className="text-transparent bg-gradient-to-br from-[#FFB81C] to-[#E03C31] bg-clip-text
+          text-4xl sm:text-5xl lg:text-[70px] lg:leading-[83.81px]">
+          {rightTitle}
+        </h1>
       </div>
-    </>
+
+      <p className="mt-4 text-ns-foreground font-open-sans text-base sm:text-lg leading-[1.3] max-w-xl mx-auto">
+        {subTitle}
+      </p>
+    </div>
   );
 };
 

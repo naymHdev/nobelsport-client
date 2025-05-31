@@ -22,12 +22,12 @@ const SportsVenue = () => {
       <div>
         <NSContainer>
           <NSSectionTitle
-            section="SPORTS vENUE"
-            leftTitle="eXPLORE VENUESTOP"
+            section="SPORTS VENUE"
+            leftTitle="EXPLORE VENUESTOP"
             rightTitle="SPORTS VENUES"
             subTitle="Discover the best sports venues around you, rated by fellow players. Book your next game at one of the top-rated locations and enjoy a seamless experience with NobleSport."
           />
-          <div className="mt-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+          <div className="mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 4xl:grid-cols-4 gap-8">
             {maltyVenues?.map((venue, idx) => (
               <NSVenueCard key={`${idx + 1}`} venue={venue} />
             ))}

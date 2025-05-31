@@ -25,9 +25,9 @@ const TopRatedVenues = () => {
         <h2 className=" my-12 text-ns-title font-openSans text-[30px] font-bold leading-8">
           Top Rated Venues
         </h2>
-        <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-8">
+        <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {maltyVenues?.map((venue, idx) => (
-            <NSVenueCard key={`${idx + 1}`} venue={venue} />
+            <NSVenueCard key={idx} venue={venue} />
           ))}
         </div>
 

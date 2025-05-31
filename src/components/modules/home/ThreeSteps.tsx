@@ -15,7 +15,7 @@ const ThreeSteps = () => {
             rightTitle="Sport Works"
             subTitle="Get started in three simple steps"
           />
-          <div className="mt-16 flex items-center justify-between gap-10">
+          <div className="mt-16 flex flex-col lg:flex-row items-center justify-between gap-10">
             <div className=" flex flex-col justify-center items-center text-center gap-6">
               <div className="bg-[#DBEAFE] rounded-full p-6 flex items-center justify-center flex-col">
                 <Image src={sh} alt="" width={30} height={30} />

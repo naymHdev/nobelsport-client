@@ -12,7 +12,7 @@ import { Separator } from "@/components/ui/separator";
 const Footer = () => {
   return (
     <>
-      <div className="bg-[#111827] py-14 px-20 text-white font-openSans">
+      <div className="bg-[#111827] py-14 lg:px-20 text-white font-openSans">
         <NSContainer className=" mt-2">
           <footer className=" grid grid-cols-1 lg:grid-cols-4 gap-11">
             <div>

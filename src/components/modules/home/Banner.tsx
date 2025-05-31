@@ -6,8 +6,9 @@ import NSButton from "@/components/ui/core/NSButton";
 const Banner = () => {
   return (
     <>
-      <div className="relative h-[600px]">
-        <div className=" h-fit w-full bg-cover overflow-hidden">
+      <div className="relative h-[400px] md:h-[500px] lg:h-[600px] w-full overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0">
           <Image
             src={banner}
             alt="Banner"
@@ -15,23 +16,45 @@ const Banner = () => {
             className="object-cover object-center"
             priority
           />
+          {/* Dark overlay for better text readability */}
+          {/* <div className="absolute inset-0 bg-black/40" /> */}
         </div>
-        <NSContainer>
-          <div className=" absolute">
-            <h1 className="font-sequel  font-extrabold text-[48px] leading-[60px] tracking-[0px] text-center uppercase text-white ml-[320px] mt-[200px]">
-              Organize & Join Community <br /> Sports with Ease
+
+        {/* Content Container */}
+        <div className="relative z-10 h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col justify-center items-center h-full text-center">
+            {/* Main Heading */}
+            <h1 className="font-extrabold text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-tight tracking-tight text-white mb-4 md:mb-6 uppercase">
+              Organize & Join Community <br className="hidden sm:block" />
+              Sports with Ease
             </h1>
-            <div className=" w-[473px] h-[473px] mt-[60px]">
-              <p className=" text-[16px] font-openSans text-white leading-6 font-normal tracking-normal capitalize">
-                Play Smarter. Connect Faster. NobleSport makes <br /> organizing
-                and joining community sports <br /> events easier than ever.
+
+            {/* Description */}
+            <div className="block xl:hidden">
+              <p className="text-sm sm:text-base md:text-lg text-white/90 leading-relaxed font-normal max-w-2xl mb-6 md:mb-8 px-4">
+                Play Smarter. Connect Faster. NobleSport makes organizing and
+                joining community sports events easier than ever.
               </p>
-              <NSButton className="mt-[26px] bg-[#FFB81C] w-[278px] h-[62px] gap-[10px] pt-[12px] pr-[32px] pb-[12px] pl-[32px] rounded-[6px] font-openSans font-bold text-xl uppercase leading-9 tracking-tight">
+
+              {/* Call to Action Button */}
+              <button className="bg-[#FFB81C] hover:bg-[#e6a519] transition-colors duration-200 text-[#E1E8F0] font-bold text-sm sm:text-base md:text-lg lg:text-xl uppercase px-6 sm:px-8 md:px-12 py-3 sm:py-4 md:py-5 rounded-md tracking-tight shadow-lg hover:shadow-xl transform hover:scale-105 ">
                 Explore Matches
-              </NSButton>
+              </button>
             </div>
           </div>
-        </NSContainer>
+        </div>
+        {/* Description */}
+        <div className=" absolute bottom-10 left-1/9 hidden xl:block ">
+          <p className="text-sm text-start sm:text-base md:text-lg text-white/90 leading-relaxed font-normal max-w-md mb-6 md:mb-8">
+            Play Smarter. Connect Faster. NobleSport makes organizing and
+            joining community sports events easier than ever.
+          </p>
+
+          {/* Call to Action Button */}
+          <button className="bg-[#FFB81C] hover:bg-[#e6a519] transition-colors duration-200 text-[#E1E8F0] font-bold text-sm sm:text-base md:text-lg lg:text-xl uppercase px-6 sm:px-8 md:px-12 py-3 sm:py-4 md:py-5 rounded-md tracking-tight shadow-lg hover:shadow-xl transform hover:scale-105 ">
+            Explore Matches
+          </button>
+        </div>
       </div>
     </>
   );
