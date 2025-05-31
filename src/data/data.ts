@@ -8,6 +8,18 @@ import venue6 from "../assets/images/venue6.png";
 import aboutImg from "../assets/images/venue-about.png";
 import vReview1 from "../assets/images/review-vn.png";
 
+export const testimonialsData = [
+  {
+    _id: "1",
+    profile_img: tp1,
+    name: "Jake Thompson",
+    gender: "Male",
+    player_experience: "“Weekly Matches, Zero Hassle!”",
+    comment:
+      "NobleSport helped me find pickup football games in my area. I’ve played every weekend since joining!",
+  },
+];
+
 export const venues = [
   {
     _id: "1",
@@ -86,26 +98,51 @@ export const venues = [
 export const matchesData = [
   {
     _id: "1",
-    match_title: "5 VS 5 Football Match",
-    match_status: "Upcoming", // Upcoming, New, New, Almost Full
-    match_start_time: "12 March, 7:00 PM",
-    match_location: "Downtown Sports Center",
-    matches: "2",
-    ground_level: "Intermediate Level",
-    tournament_details: {
-      tournament_format: ["Round 1", "Quarter-Finals", "Semi-Finals", "Final"],
-    },
-  },
-];
-
-export const testimonialsData = [
-  {
-    _id: "1",
-    profile_img: tp1,
-    name: "Jake Thompson",
-    gender: "Male",
-    player_experience: "“Weekly Matches, Zero Hassle!”",
-    comment:
-      "NobleSport helped me find pickup football games in my area. I’ve played every weekend since joining!",
+    tournament_status: "Upcoming",
+    tournament_title: "5 vs 5 tournament-Group Match",
+    tournament_start_time: "12 March, 7:00 PM",
+    tournament_level: "Intermediate Level",
+    tournament_venue: "Downtown Sports Center",
+    tournament_format: "Single Elimination",
+    tournament_formation: ["Round 1", "Quarter-Finals", "Semi-Finals", "Final"],
+    tournament_guidelines: "TODO: File hare",
+    tournament_image:
+      "https://img.icons8.com/ios-filled/50/000000/tennis-court.png",
+    matches: [
+      {
+        _id: "1",
+        match_title: "Dragons FC vs Phoenix United",
+        match_play_time: "12 March, 7:00 PM",
+        match_venue: "Downtown Sports Center",
+        match_status: "Upcoming Match",
+        image: "https://img.icons8.com/ios-filled/50/000000/tennis-court.png",
+        match_fee: "Free",
+        match_overview:
+          "Dragons FC and Phoenix United face off in this exciting 5 vs 5 friendly match. Both teams have been showing excellent form in recent matches, promising an entertaining display of skill and strategy.",
+        match_guidelines: "TODO: File hare",
+        team_size: 5,
+        available_teams: [
+          {
+            _id: "1",
+            team_name: "Dragons FC",
+            team_value: 1000,
+            team_image:
+              "https://img.icons8.com/ios-filled/50/000000/tennis-court.png",
+            available_players: [
+              {
+                _id: "1",
+                player_name: "John Doe",
+                player_age: "25",
+                professional_player: true,
+                player_club: "Dragons FC",
+                play_position: "Forward",
+                player_image:
+                  "https://img.icons8.com/ios-filled/50/000000/tennis-court.png",
+              },
+            ],
+          },
+        ],
+      },
+    ],
   },
 ];

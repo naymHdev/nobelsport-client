@@ -56,7 +56,7 @@ const NSMatchCard = ({ match }: { match: TMatchData }) => {
           </div>
         </div>
         <div className=" mt-4">
-          <Link href={`/match/${match._id}`}>
+          <Link href={`/matches/${match._id}`}>
             <NSButton className=" block rounded-full bg-ns-secondary text-white font-openSans text-center font-extrabold leading-normal w-full py-2">
               Join Match
             </NSButton>
