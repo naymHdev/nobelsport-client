@@ -12,8 +12,11 @@ const MatchDetailsPage = async ({ params }: IMatchDetailsPageProps) => {
   const { slug } = await params;
 
   const allMatches = matchesData.flatMap((tournament) => tournament.matches);
-  const matchDetails = allMatches.find((match) => match._id === slug);
+  // const matchDetails = allMatches.find((match) => match._id === slug);
   //   console.log("matchDetails", matchDetails);
+
+  const matchDetails = allMatches[0]
+  // console.log("matchDetails", matchDetails);
 
   return (
     <>

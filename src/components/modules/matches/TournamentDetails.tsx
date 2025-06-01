@@ -8,7 +8,8 @@ import { FaArrowRightLong, FaRegFileLines } from "react-icons/fa6";
 import { IoShareSocialOutline } from "react-icons/io5";
 
 const TournamentDetails = () => {
-  const tournamentDetails = matchesData.find((match) => match._id === "1");
+  // const tournamentDetails = matchesData.find((match) => match._id === "1");
+  const tournamentDetails = matchesData[0]
   // console.log("tournaments", tournamentDetails);
 
   const {

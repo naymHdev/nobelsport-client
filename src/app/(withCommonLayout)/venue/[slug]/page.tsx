@@ -8,7 +8,8 @@ type TVenueDetailsPageProps = {
 const VenueDetailsPage = async ({ params }: TVenueDetailsPageProps) => {
   const { slug } = await params;
 
-  const venueDetails = venues?.find((venue) => venue._id === slug);
+  // const venueDetails = venues?.find((venue) => venue._id === slug);
+  const venueDetails = venues[0]
   // console.log("venueDetails", venueDetails);
 
   return (
