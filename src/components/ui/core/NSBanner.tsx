@@ -2,7 +2,7 @@ import Image, { StaticImageData } from "next/image";
 
 interface IBannerProps {
   cover: string | StaticImageData;
-  title: string;
+  title?: string;
 }
 
 const NSBanner = ({ cover, title }: IBannerProps) => {

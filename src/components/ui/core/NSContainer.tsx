@@ -7,7 +7,7 @@ interface NSContainerProps {
 
 const NSContainer = ({ children, className = "" }: NSContainerProps) => {
   return (
-    <div className={`container mx-auto px-5 border border-red-500 ${className}`}>{children}</div>
+    <div className={`container mx-auto px-5 ${className}`}>{children}</div>
   );
 };
 

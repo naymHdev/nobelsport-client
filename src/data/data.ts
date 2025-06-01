@@ -51,7 +51,7 @@ export const venues = [
     amenities: [
       {
         name: "Tennis Courts",
-        icon: "https://img.icons8.com/ios-filled/50/000000/tennis-court.png",
+        icon: "https://asset.cloudinary.com/dgrg4lmww/d62c5f06232cfa4d679262d7b2699f35",
       },
       {
         name: "Pool",
@@ -103,31 +103,130 @@ export const matchesData = [
     tournament_start_time: "12 March, 7:00 PM",
     tournament_level: "Intermediate Level",
     tournament_venue: "Downtown Sports Center",
-    tournament_format: "Single Elimination",
+    tournament_format: "Knockout (Single-Elimination)",
     tournament_formation: ["Round 1", "Quarter-Finals", "Semi-Finals", "Final"],
-    tournament_guidelines: "TODO: File hare",
+    tournament_guidelines: "Tournament Rules",
     tournament_image:
-      "https://img.icons8.com/ios-filled/50/000000/tennis-court.png",
+      "https://asset.cloudinary.com/dgrg4lmww/d62c5f06232cfa4d679262d7b2699f35",
     matches: [
       {
-        _id: "1",
+        _id: "m1",
         match_title: "Dragons FC vs Phoenix United",
         match_play_time: "12 March, 7:00 PM",
         match_venue: "Downtown Sports Center",
         match_status: "Upcoming Match",
-        image: "https://img.icons8.com/ios-filled/50/000000/tennis-court.png",
+        image: "https://asset.cloudinary.com/dgrg4lmww/d62c5f06232cfa4d679262d7b2699f35",
         match_fee: "Free",
         match_overview:
           "Dragons FC and Phoenix United face off in this exciting 5 vs 5 friendly match. Both teams have been showing excellent form in recent matches, promising an entertaining display of skill and strategy.",
-        match_guidelines: "TODO: File hare",
+        match_guidelines: "Match Rules",
+        team_size: 5,
+        available_teams: [
+          {
+            _id: "t1",
+            team_name: "Dragons FC",
+            team_value: 1000,
+            playable_match: 5,
+            playing_match: 5,
+            team_image:
+              "https://asset.cloudinary.com/dgrg4lmww/d62c5f06232cfa4d679262d7b2699f35",
+            available_players: [
+              {
+                _id: "p1",
+                player_name: "Ronaldo",
+                player_age: "25",
+                professional_player: true,
+                player_club: "Dragons FC",
+                play_position: "Forward",
+                player_image:
+                  "https://asset.cloudinary.com/dgrg4lmww/d62c5f06232cfa4d679262d7b2699f35",
+              },
+              {
+                _id: "p2",
+                player_name: "Ronaldo",
+                player_age: "25",
+                professional_player: true,
+                player_club: "Dragons FC",
+                play_position: "Forward",
+                player_image:
+                  "https://asset.cloudinary.com/dgrg4lmww/d62c5f06232cfa4d679262d7b2699f35",
+              },
+              {
+                _id: "p3",
+                player_name: "Ronaldo",
+                player_age: "25",
+                professional_player: true,
+                player_club: "Dragons FC",
+                play_position: "Forward",
+                player_image:
+                  "https://asset.cloudinary.com/dgrg4lmww/d62c5f06232cfa4d679262d7b2699f35",
+              },
+            ],
+          },
+          {
+            _id: "t2",
+            team_name: "Red Foxes",
+            team_value: 90000,
+            playable_match: 5,
+            playing_match: 5,
+            team_image:
+              "https://asset.cloudinary.com/dgrg4lmww/d62c5f06232cfa4d679262d7b2699f35",
+            available_players: [
+              {
+                _id: "p1",
+                player_name: "Ronaldo",
+                player_age: "25",
+                professional_player: true,
+                player_club: "Dragons FC",
+                play_position: "Forward",
+                player_image:
+                  "https://asset.cloudinary.com/dgrg4lmww/d62c5f06232cfa4d679262d7b2699f35",
+              },
+              {
+                _id: "p2",
+                player_name: "Ronaldo",
+                player_age: "25",
+                professional_player: true,
+                player_club: "Dragons FC",
+                play_position: "Forward",
+                player_image:
+                  "https://asset.cloudinary.com/dgrg4lmww/d62c5f06232cfa4d679262d7b2699f35",
+              },
+              {
+                _id: "p3",
+                player_name: "Ronaldo",
+                player_age: "25",
+                professional_player: true,
+                player_club: "Dragons FC",
+                play_position: "Forward",
+                player_image:
+                  "https://asset.cloudinary.com/dgrg4lmww/d62c5f06232cfa4d679262d7b2699f35",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        _id: "m2",
+        match_title: "Dragons FC vs Phoenix United",
+        match_play_time: "12 March, 7:00 PM",
+        match_venue: "Downtown Sports Center",
+        match_status: "Upcoming Match",
+        image: "https://asset.cloudinary.com/dgrg4lmww/d62c5f06232cfa4d679262d7b2699f35",
+        match_fee: "Free",
+        match_overview:
+          "Dragons FC and Phoenix United face off in this exciting 5 vs 5 friendly match. Both teams have been showing excellent form in recent matches, promising an entertaining display of skill and strategy.",
+        match_guidelines: "Match Rules",
         team_size: 5,
         available_teams: [
           {
             _id: "1",
             team_name: "Dragons FC",
             team_value: 1000,
+            playable_match: 5,
+            playing_match: 5,
             team_image:
-              "https://img.icons8.com/ios-filled/50/000000/tennis-court.png",
+              "https://asset.cloudinary.com/dgrg4lmww/d62c5f06232cfa4d679262d7b2699f35",
             available_players: [
               {
                 _id: "1",
@@ -137,7 +236,43 @@ export const matchesData = [
                 player_club: "Dragons FC",
                 play_position: "Forward",
                 player_image:
-                  "https://img.icons8.com/ios-filled/50/000000/tennis-court.png",
+                  "https://asset.cloudinary.com/dgrg4lmww/d62c5f06232cfa4d679262d7b2699f35",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        _id: "m3",
+        match_title: "Dragons FC vs Phoenix United",
+        match_play_time: "12 March, 7:00 PM",
+        match_venue: "Downtown Sports Center",
+        match_status: "Upcoming Match",
+        image: "https://asset.cloudinary.com/dgrg4lmww/d62c5f06232cfa4d679262d7b2699f35",
+        match_fee: "Free",
+        match_overview:
+          "Dragons FC and Phoenix United face off in this exciting 5 vs 5 friendly match. Both teams have been showing excellent form in recent matches, promising an entertaining display of skill and strategy.",
+        match_guidelines: "Match Rules",
+        team_size: 5,
+        available_teams: [
+          {
+            _id: "1",
+            team_name: "Dragons FC",
+            team_value: 1000,
+            playable_match: 5,
+            playing_match: 5,
+            team_image:
+              "https://asset.cloudinary.com/dgrg4lmww/d62c5f06232cfa4d679262d7b2699f35",
+            available_players: [
+              {
+                _id: "1",
+                player_name: "John Doe",
+                player_age: "25",
+                professional_player: true,
+                player_club: "Dragons FC",
+                play_position: "Forward",
+                player_image:
+                  "https://asset.cloudinary.com/dgrg4lmww/d62c5f06232cfa4d679262d7b2699f35",
               },
             ],
           },

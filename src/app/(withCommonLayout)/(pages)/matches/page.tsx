@@ -15,7 +15,7 @@ const MatchesPage = () => {
         <NSContainer>
           <div className="relative z-10 -mt-36">
             <MatchFilter />
-            {/* <ExploreMatches /> */}
+            <ExploreMatches />
           </div>
         </NSContainer>
       </div>
