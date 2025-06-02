@@ -79,13 +79,13 @@ const Footer = () => {
               <div className=" mt-[18px] space-y-[15px] flex flex-col">
                 <Link
                   className=" font-normal leading-4 text-[16px] hover:text-ns-secondary"
-                  href="#"
+                  href="/terms-of-service"
                 >
                   Terms of Service
                 </Link>
                 <Link
                   className=" font-normal leading-4 text-[16px] hover:text-ns-secondary"
-                  href="#"
+                  href="/terms-of-policy"
                 >
                   Privacy Policy
                 </Link>

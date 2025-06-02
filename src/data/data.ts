@@ -115,7 +115,8 @@ export const matchesData = [
         match_play_time: "12 March, 7:00 PM",
         match_venue: "Downtown Sports Center",
         match_status: "Upcoming Match",
-        image: "https://asset.cloudinary.com/dgrg4lmww/d62c5f06232cfa4d679262d7b2699f35",
+        image:
+          "https://asset.cloudinary.com/dgrg4lmww/d62c5f06232cfa4d679262d7b2699f35",
         match_fee: "Free",
         match_overview:
           "Dragons FC and Phoenix United face off in this exciting 5 vs 5 friendly match. Both teams have been showing excellent form in recent matches, promising an entertaining display of skill and strategy.",
@@ -212,7 +213,8 @@ export const matchesData = [
         match_play_time: "12 March, 7:00 PM",
         match_venue: "Downtown Sports Center",
         match_status: "Upcoming Match",
-        image: "https://asset.cloudinary.com/dgrg4lmww/d62c5f06232cfa4d679262d7b2699f35",
+        image:
+          "https://asset.cloudinary.com/dgrg4lmww/d62c5f06232cfa4d679262d7b2699f35",
         match_fee: "Free",
         match_overview:
           "Dragons FC and Phoenix United face off in this exciting 5 vs 5 friendly match. Both teams have been showing excellent form in recent matches, promising an entertaining display of skill and strategy.",
@@ -248,7 +250,8 @@ export const matchesData = [
         match_play_time: "12 March, 7:00 PM",
         match_venue: "Downtown Sports Center",
         match_status: "Upcoming Match",
-        image: "https://asset.cloudinary.com/dgrg4lmww/d62c5f06232cfa4d679262d7b2699f35",
+        image:
+          "https://asset.cloudinary.com/dgrg4lmww/d62c5f06232cfa4d679262d7b2699f35",
         match_fee: "Free",
         match_overview:
           "Dragons FC and Phoenix United face off in this exciting 5 vs 5 friendly match. Both teams have been showing excellent form in recent matches, promising an entertaining display of skill and strategy.",

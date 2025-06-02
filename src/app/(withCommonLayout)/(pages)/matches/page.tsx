@@ -3,6 +3,7 @@ import coverImg from "../../../../assets/images/venue-cover.png";
 import NSBanner from "@/components/ui/core/NSBanner";
 import MatchFilter from "@/components/modules/matches/MatchFilter";
 import ExploreMatches from "@/components/modules/matches/ExploreMatches";
+import ComplectedMatch from "@/components/modules/matches/CompleatedMatch";
 
 const MatchesPage = () => {
   return (
@@ -18,6 +19,7 @@ const MatchesPage = () => {
             <ExploreMatches />
           </div>
         </NSContainer>
+        <ComplectedMatch />
       </div>
     </>
   );

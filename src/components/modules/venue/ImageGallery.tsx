@@ -53,40 +53,6 @@ export function ImageGallery({ images = [], title }: ImageGalleryProps) {
           ))}
         </div>
       </div>
-
-      {/* Additional images indicator if there are more than 5 images */}
-      {/* {images.length > 5 && (
-        <Dialog>
-          <DialogTrigger asChild>
-            <div className="mt-3 sm:mt-4">
-              <button
-                className="w-full py-2 px-4 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg text-sm font-medium transition-colors"
-                onClick={() => setSelectedImage(images[5])}
-              >
-                +{images.length - 5} more images
-              </button>
-            </div>
-          </DialogTrigger>
-          <DialogContent className="max-w-4xl w-full">
-            <DialogHeader>
-              <DialogTitle>{title}</DialogTitle>
-              <DialogDescription>
-                Image {images.indexOf(selectedImage || "") + 1} of{" "}
-                {images.length}
-              </DialogDescription>
-            </DialogHeader>
-            <div className="relative w-full h-[70vh]">
-              <Image
-                src={selectedImage || images[5]}
-                alt={title as string}
-                fill
-                className="object-contain"
-                sizes="(max-width: 768px) 100vw, 90vw"
-              />
-            </div>
-          </DialogContent>
-        </Dialog>
-      )} */}
     </>
   );
 }
