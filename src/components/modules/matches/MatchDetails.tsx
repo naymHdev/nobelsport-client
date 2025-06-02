@@ -14,7 +14,6 @@ const MatchDetails = ({ matchData }: { matchData: TMatch }) => {
     match_venue,
     match_play_time,
     match_status,
-    image,
   } = matchData || {};
 
   return (
@@ -155,7 +154,7 @@ const MatchDetails = ({ matchData }: { matchData: TMatch }) => {
               </h1>
             </CardHeader>
             <div>
-              <TeamsTab availableTeams={available_teams} />
+              <TeamsTab matchData={matchData} availableTeams={available_teams} />
             </div>
           </Card>
         </section>
