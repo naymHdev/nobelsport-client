@@ -1,35 +1,35 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import NSContainer from "../ui/core/NSContainer"
-import { usePathname } from "next/navigation"
-import clsx from "clsx"
-import NSButton from "../ui/core/NSButton"
-import Locations from "../Locations"
-import TopBar from "./TopBar"
-import logo from "../../assets/images/nb-sport-logo.png"
-import Image from "next/image"
-import { useState } from "react"
-import { Menu, X } from "lucide-react"
+import Link from "next/link";
+import NSContainer from "../ui/core/NSContainer";
+import { usePathname } from "next/navigation";
+import clsx from "clsx";
+import NSButton from "../ui/core/NSButton";
+import Locations from "../Locations";
+import TopBar from "./TopBar";
+import logo from "../../assets/images/nb-sport-logo.png";
+import Image from "next/image";
+import { useState } from "react";
+import { Menu, X } from "lucide-react";
 
 const Navbar = () => {
-  const pathname = usePathname()
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const pathname = usePathname();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navLinks = [
     { href: "/", label: "Home" },
     { href: "/venue", label: "Venue" },
     { href: "/matches", label: "Matches" },
     { href: "/how-it-works", label: "How It Works" },
-  ]
+  ];
 
   const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen)
-  }
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
 
   const closeMobileMenu = () => {
-    setIsMobileMenuOpen(false)
-  }
+    setIsMobileMenuOpen(false);
+  };
 
   return (
     <>
@@ -39,7 +39,12 @@ const Navbar = () => {
           <div className="mt-2 flex items-center justify-between h-[71px]">
             {/* Logo */}
             <div className="w-[50px] h-[50px] md:w-[60px] md:h-[60px] flex-shrink-0">
-              <Image src={logo || "/placeholder.svg"} alt="Logo" className="w-full h-full object-contain" priority />
+              <Image
+                src={logo || "/placeholder.svg"}
+                alt="Logo"
+                className="w-full h-full object-contain"
+                priority
+              />
             </div>
 
             {/* Desktop Navigation */}
@@ -50,7 +55,9 @@ const Navbar = () => {
                   href={href}
                   className={clsx(
                     "transition-colors duration-200 hover:text-ns-primary",
-                    pathname === href ? "text-ns-primary font-extrabold" : "text-ns-foreground font-normal",
+                    pathname === href
+                      ? "text-ns-primary font-extrabold"
+                      : "text-ns-foreground font-normal"
                   )}
                 >
                   {label}
@@ -63,7 +70,11 @@ const Navbar = () => {
               <NSButton className="text-ns-primary font-normal bg-transparent text-sm lg:text-base px-3 lg:px-4">
                 Sign In
               </NSButton>
-              <NSButton className="font-normal text-sm lg:text-base px-3 lg:px-4">Join Now</NSButton>
+              <Link href={"/join-as"}>
+                <NSButton className="font-normal text-sm lg:text-base px-3 lg:px-4">
+                  Join Now
+                </NSButton>
+              </Link>
               <div className="hidden lg:block">
                 <Locations />
               </div>
@@ -96,7 +107,7 @@ const Navbar = () => {
                         "block py-2 px-4 rounded-md transition-colors duration-200",
                         pathname === href
                           ? "text-ns-primary font-extrabold bg-ns-primary/10"
-                          : "text-ns-foreground font-normal hover:text-ns-primary hover:bg-gray-50",
+                          : "text-ns-foreground font-normal hover:text-ns-primary hover:bg-gray-50"
                       )}
                     >
                       {label}
@@ -112,7 +123,10 @@ const Navbar = () => {
                   >
                     Sign In
                   </NSButton>
-                  <NSButton className="w-full font-normal" onClick={closeMobileMenu}>
+                  <NSButton
+                    className="w-full font-normal"
+                    onClick={closeMobileMenu}
+                  >
                     Join Now
                   </NSButton>
                   <div className="pt-2">
@@ -125,10 +139,15 @@ const Navbar = () => {
         )}
 
         {/* Mobile Menu Backdrop */}
-        {isMobileMenuOpen && <div className="md:hidden fixed inset-0 bg-black/20 z-40" onClick={closeMobileMenu} />}
+        {isMobileMenuOpen && (
+          <div
+            className="md:hidden fixed inset-0 bg-black/20 z-40"
+            onClick={closeMobileMenu}
+          />
+        )}
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
