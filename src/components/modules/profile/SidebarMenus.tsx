@@ -7,9 +7,12 @@ import { CgProfile } from "react-icons/cg";
 import { ImStatsBars } from "react-icons/im";
 import { IoBookOutline, IoSettingsOutline } from "react-icons/io5";
 import { LuCrown } from "react-icons/lu";
+import { usePathname } from "next/navigation";
 
 const SidebarMenus = () => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const pathname = usePathname();
 
   const sideMenus = [
     {
@@ -114,21 +117,40 @@ const SidebarMenus = () => {
 
           {/*----------------- Menus ---------------- */}
           <nav className="mt-5 flex-1 overflow-y-auto">
-            {sideMenus.map((menu, idx) => (
-              <Link
-                key={idx}
-                href={menu.link}
-                onClick={() => setIsOpen(false)}
-                className="block cursor-pointer hover:bg-ns-secondary hover:transition-all hover:duration-300 px-4 group"
-              >
-                <div className="flex items-center gap-3 mt-3 py-2">
-                  <span className="group-hover:text-white">{menu.icon}</span>
-                  <span className="text-[#374151] text-[16px] group-hover:text-white">
-                    {menu.title}
-                  </span>
-                </div>
-              </Link>
-            ))}
+            {sideMenus.map((menu, idx) => {
+              const isActive = pathname === menu.link;
+
+              return (
+                <Link
+                  key={idx}
+                  href={menu.link}
+                  onClick={() => setIsOpen(false)}
+                  className={`block cursor-pointer px-4 group
+                    ${
+                      isActive
+                        ? "bg-ns-secondary text-white"
+                        : "hover:bg-ns-secondary hover:text-white"
+                    }`}
+                >
+                  <div
+                    className={`flex items-center gap-3 mt-3 py-2 ${
+                      isActive
+                        ? "text-white"
+                        : " text-ns-title group-hover:text-white"
+                    }`}
+                  >
+                    <span
+                      className={
+                        isActive ? "text-white" : "group-hover:text-white"
+                      }
+                    >
+                      {menu.icon}
+                    </span>
+                    <span>{menu.title}</span>
+                  </div>
+                </Link>
+              );
+            })}
           </nav>
         </div>
       </aside>

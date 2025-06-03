@@ -1,10 +1,10 @@
-import StatsTracking from "@/components/modules/profile/StatsTracking";
+import StatsTrack from "@/components/modules/profile/StatsTracking";
 
 const StatsTrackingPage = () => {
   return (
     <>
       <div className=" mb-10">
-        <StatsTracking />
+        <StatsTrack />
       </div>
     </>
   );

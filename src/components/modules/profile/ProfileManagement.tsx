@@ -4,10 +4,10 @@ import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 import NSButton from "@/components/ui/core/NSButton";
 import { SportsPreferences } from "./SportsPreferences";
 import { SkillLevel } from "./SkillLevel";
-import SimpleAvailabilityCalendar from "./SimpleAvailabilityCalendar";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import EditProfileModal from "./EditProfileModal";
+import AvailabilityCalendar from "./availability-calendar";
 
 const ProfileManagement = () => {
   return (
@@ -107,7 +107,7 @@ const ProfileManagement = () => {
               </CardHeader>
 
               <div className=" px-6 -mt-2">
-                <SimpleAvailabilityCalendar />
+                <AvailabilityCalendar />
               </div>
             </Card>
           </section>

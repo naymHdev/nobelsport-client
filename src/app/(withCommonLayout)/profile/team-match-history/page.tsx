@@ -1,8 +1,13 @@
+import TeamAndMatchHistory from "@/components/modules/profile/TeamAndMatchHistory";
 
-const TeamAndMatchHistory = () => {
+const TeamAndMatchHistoryPage = () => {
   return (
-    <>TeamAndMatchHistory</>
-);
+    <>
+      <div className=" mb-10">
+        <TeamAndMatchHistory />
+      </div>
+    </>
+  );
 };
 
-export default TeamAndMatchHistory;
+export default TeamAndMatchHistoryPage;
