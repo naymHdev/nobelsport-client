@@ -11,10 +11,15 @@ import logo from "../../assets/images/nb-sport-logo.png";
 import Image from "next/image";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import notify from "@/assets/icons/notification-circle.png";
+import { IoIosNotificationsOutline } from "react-icons/io";
 
 const Navbar = () => {
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const user = true;
 
   const navLinks = [
     { href: "/", label: "Home" },
@@ -66,15 +71,43 @@ const Navbar = () => {
             </div>
 
             {/* Desktop Actions */}
-            <div className="hidden md:flex items-center gap-3 lg:gap-5">
-              <NSButton className="text-ns-primary font-normal bg-transparent text-sm lg:text-base px-3 lg:px-4">
-                Sign In
-              </NSButton>
-              <Link href={"/join-as"}>
-                <NSButton className="font-normal text-sm lg:text-base px-3 lg:px-4">
-                  Join Now
-                </NSButton>
-              </Link>
+            <div className=" flex items-center gap-3 lg:gap-6">
+              {user ? (
+                <div className=" flex items-center gap-3">
+                  <div>
+                    <Image
+                      src={notify || "/placeholder.svg"}
+                      alt="Logo"
+                      className=" w-8 h-8 object-cover"
+                      height={50}
+                      width={50}
+                    />
+                  </div>
+                  <div className="relative">
+                    <IoIosNotificationsOutline size={24} />
+                    <span className="absolute top-0 right-0 block h-2 w-2 rounded-full ring-2 ring-white bg-red-500 animate-ping" />
+                    <span className="absolute top-0 right-0 block h-2 w-2 rounded-full ring-2 ring-white bg-red-500" />
+                  </div>
+
+                  <Link href={"/profile"}>
+                    <Avatar>
+                      <AvatarImage src="https://res.cloudinary.com/dgrg4lmww/image/upload/v1748919229/profile-icon_sdaqtt.png" />
+                      <AvatarFallback>CN</AvatarFallback>
+                    </Avatar>
+                  </Link>
+                </div>
+              ) : (
+                <div className=" flex items-center gap-4">
+                  <NSButton className="text-ns-primary font-normal bg-transparent text-sm lg:text-base px-3 lg:px-4">
+                    Sign In
+                  </NSButton>
+                  <Link href={"/join-as"}>
+                    <NSButton className="font-normal text-sm lg:text-base px-3 lg:px-4">
+                      Join Now
+                    </NSButton>
+                  </Link>
+                </div>
+              )}
               <div className="hidden lg:block">
                 <Locations />
               </div>
