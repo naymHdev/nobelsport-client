@@ -7,6 +7,7 @@ import { SkillLevel } from "./SkillLevel";
 import SimpleAvailabilityCalendar from "./SimpleAvailabilityCalendar";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import EditProfileModal from "./EditProfileModal";
 
 const ProfileManagement = () => {
   return (
@@ -59,9 +60,7 @@ const ProfileManagement = () => {
                   </div>
                 </div>
                 <div className=" mt-8">
-                  <NSButton className=" bg-ns-secondary text-white rounded-lg py-3">
-                    Edit Profile
-                  </NSButton>
+                  <EditProfileModal />
                 </div>
               </div>
             </Card>
