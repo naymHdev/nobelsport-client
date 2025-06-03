@@ -1,8 +1,13 @@
+import StatsTracking from "@/components/modules/profile/StatsTracking";
 
-const page = () => {
+const StatsTrackingPage = () => {
   return (
-    <>page</>
-);
+    <>
+      <div className=" mb-10">
+        <StatsTracking />
+      </div>
+    </>
+  );
 };
 
-export default page;
+export default StatsTrackingPage;
