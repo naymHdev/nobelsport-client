@@ -2,7 +2,6 @@
 
 import NSMatchCard from "@/components/ui/core/NSMatchCard";
 import { matchesData } from "@/data/data";
-import { TMatchData } from "@/types/match";
 import {
   Pagination,
   PaginationContent,
@@ -11,9 +10,10 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
+import { TTournament } from "@/types/match";
 
 const ExploreMatches = () => {
-  const maltyMatches: TMatchData[] | undefined = Array.from(
+  const maltyMatches: TTournament[] | undefined = Array.from(
     { length: 12 },
     (_, index) => ({
       ...matchesData[0],

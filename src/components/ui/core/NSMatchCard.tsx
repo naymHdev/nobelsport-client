@@ -5,6 +5,7 @@ import { Clock, MapPin, UserRound } from "lucide-react";
 import clsx from "clsx";
 import Link from "next/link";
 import { TTournament } from "@/types/match";
+import { FaCrown } from "react-icons/fa";
 
 const NSMatchCard = ({ match }: { match: TTournament }) => {
   const {
@@ -17,22 +18,32 @@ const NSMatchCard = ({ match }: { match: TTournament }) => {
     _id,
   } = match as TTournament;
 
+  const role = "pro";
+
   return (
     <>
       <div className=" border rounded-2xl p-6 flex-col justify-start bg-white">
         <div className=" flex items-center justify-between">
-          <NSButton
-            className={clsx(
-              " p-3 py-1 rounded-full",
-              tournament_status === "Upcoming" && "bg-[#D1FAE5] text-[#059669]",
-              tournament_status === "Almost Full" &&
-                "bg-[rgba(251,191,36,0.14)] text-[#F6AD0E]",
-              tournament_status === "New" &&
-                "bg-[rgba(59,130,246,0.19)] text-[#2563EB]"
-            )}
-          >
-            {tournament_status}
-          </NSButton>
+          {role === "pro" ? (
+            <NSButton className="text-[#B45309] bg-[#FEF3C7] p-3 py-1 rounded-full flex items-center gap-1">
+              <FaCrown className=" text-lg" />
+              VIP Access
+            </NSButton>
+          ) : (
+            <NSButton
+              className={clsx(
+                " p-3 py-1 rounded-full",
+                tournament_status === "Upcoming" &&
+                  "bg-[#D1FAE5] text-[#059669]",
+                tournament_status === "Almost Full" &&
+                  "bg-[rgba(251,191,36,0.14)] text-[#F6AD0E]",
+                tournament_status === "New" &&
+                  "bg-[rgba(59,130,246,0.19)] text-[#2563EB]"
+              )}
+            >
+              {tournament_status}
+            </NSButton>
+          )}
           <p className=" font-openSans text-ns-foreground font-normal leading-4">
             {matches.length} sports left
           </p>

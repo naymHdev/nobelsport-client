@@ -154,7 +154,10 @@ const MatchDetails = ({ matchData }: { matchData: TMatch }) => {
               </h1>
             </CardHeader>
             <div>
-              <TeamsTab matchData={matchData} availableTeams={available_teams} />
+              <TeamsTab
+                matchData={matchData}
+                availableTeams={available_teams}
+              />
             </div>
           </Card>
         </section>

@@ -1,6 +1,7 @@
 "use client";
 
 import { Card, CardHeader } from "@/components/ui/card";
+import NSMatchCard from "@/components/ui/core/NSMatchCard";
 import { matchesData } from "@/data/data";
 import { TTournament } from "@/types/match";
 import Link from "next/link";
@@ -19,6 +20,16 @@ const TournamentDetails = () => {
     tournament_formation,
     tournament_guidelines,
   } = (tournamentDetails as TTournament) || {};
+
+  const maltyMatches: TTournament[] | undefined = Array.from(
+    { length: 3 },
+    (_, index) => ({
+      ...matchesData[0],
+      _id: `${index + 1}`,
+    })
+  );
+
+  const role = "armature";
 
   return (
     <>
@@ -142,6 +153,20 @@ const TournamentDetails = () => {
               })}
           </div>
         </section>
+
+        {/* ------------ Match Recommendation Section for Armature Players ------------ */}
+        {role === "armature" && (
+          <section className=" mt-10">
+            <h1 className="lg:text-xl text-lg font-semibold lg:font-bold text-ns-title mb-6">
+              Recommended Matches for you
+            </h1>
+            <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {maltyMatches?.map((match, idx) => (
+                <NSMatchCard key={`${idx + 1}`} match={match} />
+              ))}
+            </div>
+          </section>
+        )}
       </div>
     </>
   );

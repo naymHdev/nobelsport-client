@@ -7,8 +7,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import GoalAssistsChart from "./GoalAssistsChart";
+import WinRateChart from "./WinRateChart";
 
 export default function PremiumFeatures() {
+  const role = "pro";
+
   return (
     <div className="">
       <div className="space-y-6">
@@ -21,14 +25,20 @@ export default function PremiumFeatures() {
                 Goals & Assists Over Time
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
-              <p className="text-sm text-gray-600">
-                Your current plan is free,Upgrade to enable this feature
-              </p>
-              <Button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 lg:py-5 rounded-md">
-                Upgrade Now
-              </Button>
-            </CardContent>
+            {role === "pro" ? (
+              <>
+                <GoalAssistsChart />
+              </>
+            ) : (
+              <CardContent className="space-y-4">
+                <p className="text-sm text-gray-600">
+                  Your current plan is free,Upgrade to enable this feature
+                </p>
+                <Button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 lg:py-5 rounded-md">
+                  Upgrade Now
+                </Button>
+              </CardContent>
+            )}
           </Card>
 
           {/* Win Rate Compared */}
@@ -48,14 +58,20 @@ export default function PremiumFeatures() {
                 </SelectContent>
               </Select>
             </CardHeader>
-            <CardContent className="space-y-4">
-              <p className="text-sm text-gray-600">
-                Your current plan is free,Upgrade to enable this feature
-              </p>
-              <Button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 lg:py-5 rounded-md ">
-                Upgrade Now
-              </Button>
-            </CardContent>
+            {role === "pro" ? (
+              <>
+                <WinRateChart />
+              </>
+            ) : (
+              <CardContent className="space-y-4">
+                <p className="text-sm text-gray-600">
+                  Your current plan is free,Upgrade to enable this feature
+                </p>
+                <Button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 lg:py-5 rounded-md">
+                  Upgrade Now
+                </Button>
+              </CardContent>
+            )}
           </Card>
         </div>
 
@@ -66,14 +82,25 @@ export default function PremiumFeatures() {
               Recent Matches Stats
             </CardTitle>
           </CardHeader>
-          <CardContent className="space-y-4">
-            <p className="text-sm text-gray-600">
-              Your current plan is free,Upgrade to enable this feature
-            </p>
-            <Button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-md lg:py-5">
-              Upgrade Now
-            </Button>
-          </CardContent>
+          {role === "pro" ? (
+            <CardContent className="space-y-4">
+              <p className="text-sm text-gray-600">
+                Your current plan is free,Upgrade to enable this feature
+              </p>
+              <Button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 lg:py-5 rounded-md">
+                Upgrade Now
+              </Button>
+            </CardContent>
+          ) : (
+            <CardContent className="space-y-4">
+              <p className="text-sm text-gray-600">
+                Your current plan is free,Upgrade to enable this feature
+              </p>
+              <Button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 lg:py-5 rounded-md">
+                Upgrade Now
+              </Button>
+            </CardContent>
+          )}
         </Card>
 
         {/* Player Chemistry Insights */}
@@ -83,14 +110,25 @@ export default function PremiumFeatures() {
               Player Chemistry Insights
             </CardTitle>
           </CardHeader>
-          <CardContent className="space-y-4">
-            <p className="text-sm text-gray-600">
-              Your current plan is free,Upgrade to enable this feature
-            </p>
-            <Button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-md lg:py-5">
-              Upgrade Now
-            </Button>
-          </CardContent>
+          {role === "pro" ? (
+            <CardContent className="space-y-4">
+              <p className="text-sm text-gray-600">
+                Your current plan is free,Upgrade to enable this feature
+              </p>
+              <Button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 lg:py-5 rounded-md">
+                Upgrade Now
+              </Button>
+            </CardContent>
+          ) : (
+            <CardContent className="space-y-4">
+              <p className="text-sm text-gray-600">
+                Your current plan is free,Upgrade to enable this feature
+              </p>
+              <Button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 lg:py-5 rounded-md">
+                Upgrade Now
+              </Button>
+            </CardContent>
+          )}
         </Card>
       </div>
     </div>
