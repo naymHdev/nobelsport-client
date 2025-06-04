@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
 import { AiOutlineMessage } from "react-icons/ai";
+import Link from "next/link";
 
 type MatchStatus = "accepted" | "send-request" | "pending" | "completed";
 
@@ -230,32 +231,43 @@ export default function TeamAndMatchHistory() {
         <div className="space-y-4 mb-8">
           {matches.map((match) => {
             const statusConfig = getStatusBadge(match.status);
+            // /profile/completed-match-details/${match.id}
             return (
-              <Card
+              <Link
+                className="p-6"
                 key={match.id}
-                className="p-6 bg-white shadow-none border-none"
+                href={`${
+                  match.status === "completed"
+                    ? `/profile/completed-match-details/${match.id}`
+                    : "#"
+                }`}
+                style={{
+                  pointerEvents: match.status === "completed" ? "auto" : "none",
+                }}
               >
-                <div className="flex items-start justify-between mb-4">
-                  <div className="flex-1">
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                      {match.title}
-                    </h3>
-                    <div className="flex items-center text-gray-500 text-sm">
-                      <Calendar className="h-4 w-4 mr-2" />
-                      <span>
-                        {match.date} • {match.time}
-                      </span>
+                <Card className="px-6 bg-white shadow-none border-none">
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="flex-1">
+                      <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                        {match.title}
+                      </h3>
+                      <div className="flex items-center text-gray-500 text-sm">
+                        <Calendar className="h-4 w-4 mr-2" />
+                        <span>
+                          {match.date} • {match.time}
+                        </span>
+                      </div>
                     </div>
+                    <Badge className={statusConfig.className}>
+                      {statusConfig.label}
+                    </Badge>
                   </div>
-                  <Badge className={statusConfig.className}>
-                    {statusConfig.label}
-                  </Badge>
-                </div>
 
-                <div className="flex items-center justify-start">
-                  {getActionButtons(match.status)}
-                </div>
-              </Card>
+                  <div className="flex items-center justify-start">
+                    {getActionButtons(match.status)}
+                  </div>
+                </Card>
+              </Link>
             );
           })}
         </div>
