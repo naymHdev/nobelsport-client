@@ -1,11 +1,11 @@
-import NSContainer from "@/components/ui/core/NSContainer";
+import MessageInterface from "@/components/modules/Messages/message-interface";
 
 const MessagePage = () => {
   return (
     <>
-      <NSContainer>
-        <div></div>
-      </NSContainer>
+      <div className="">
+        <MessageInterface />
+      </div>
     </>
   );
 };

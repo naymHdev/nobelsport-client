@@ -93,7 +93,7 @@ const Navbar = () => {
 
                   <Link href={"/profile"}>
                     <Avatar>
-                      <AvatarImage src="https://res.cloudinary.com/dgrg4lmww/image/upload/v1748919229/profile-icon_sdaqtt.png" />
+                      <AvatarImage src="https://shorturl.at/Ge8HU" />
                       <AvatarFallback>CN</AvatarFallback>
                     </Avatar>
                   </Link>
