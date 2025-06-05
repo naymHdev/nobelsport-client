@@ -85,11 +85,13 @@ const Navbar = () => {
                       />
                     </Link>
                   </div>
-                  <div className="relative">
-                    <IoIosNotificationsOutline size={24} />
-                    <span className="absolute top-0 right-0 block h-2 w-2 rounded-full ring-2 ring-white bg-red-500 animate-ping" />
-                    <span className="absolute top-0 right-0 block h-2 w-2 rounded-full ring-2 ring-white bg-red-500" />
-                  </div>
+                  <Link href={"/notifications"}>
+                    <div className="relative">
+                      <IoIosNotificationsOutline size={24} />
+                      <span className="absolute top-0 right-0 block h-2 w-2 rounded-full ring-2 ring-white bg-red-500 animate-ping" />
+                      <span className="absolute top-0 right-0 block h-2 w-2 rounded-full ring-2 ring-white bg-red-500" />
+                    </div>
+                  </Link>
 
                   <Link href={"/profile"}>
                     <Avatar>

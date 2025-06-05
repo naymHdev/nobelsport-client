@@ -1,17 +1,18 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Link from "next/link";
 import { CgProfile } from "react-icons/cg";
 import { ImStatsBars } from "react-icons/im";
 import { IoBookOutline, IoSettingsOutline } from "react-icons/io5";
 import { LuCrown } from "react-icons/lu";
 import { usePathname } from "next/navigation";
-import { HiMiniBars3BottomRight } from "react-icons/hi2";
+import { HiMiniBars3BottomRight, HiOutlineCamera } from "react-icons/hi2";
+import Image from "next/image";
 
 const SidebarMenus = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isImage, setIsImage] = useState<string | null>(null);
 
   const pathname = usePathname();
 
@@ -52,6 +53,15 @@ const SidebarMenus = () => {
     return () => window.removeEventListener("keydown", handleEsc);
   }, []);
 
+  //  ---------------- Handle Image Upload ----------------
+  const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files ? event.target.files[0] : null;
+    if (file) {
+      const imageUrl = URL.createObjectURL(file);
+      setIsImage(imageUrl);
+    }
+  };
+
   return (
     <>
       {/*  ----------- Mobile Hamburger Button ----------- */}
@@ -68,16 +78,6 @@ const SidebarMenus = () => {
           <HiMiniBars3BottomRight size={24} />
         )}
       </button>
-
-      {/* Overlay for mobile when sidebar open */}
-      {/* {isOpen && (
-  <div
-    onClick={() => setIsOpen(false)}
-    className="fixed inset-0 bg-gray-900 bg-opacity-40 backdrop-blur-sm z-30 lg:hidden"
-    aria-hidden="true"
-  />
-)} */}
-
       {/* ---------------- Sidebar ---------------- */}
       <aside
         className={`fixed top-0 left-0 z-40 h-full w-64 bg-white shadow-md
@@ -87,15 +87,40 @@ const SidebarMenus = () => {
       >
         <div className="py-4 font-openSans lg:flex flex-col h-full">
           {/* ---------------- User Profile ---------------- */}
-          <div className="flex flex-col items-center text-center justify-center px-4">
-            <Avatar className="w-[128px] h-[128px]">
-              <AvatarImage src="https://res.cloudinary.com/dgrg4lmww/image/upload/v1748922029/Ellipse_961_tsyc71.png" />
-              <AvatarFallback>CN</AvatarFallback>
-            </Avatar>
+          <div className="flex flex-col items-center text-center justify-center px-4 relative">
+            <div className="w-[128px] h-[128px] rounded-full overflow-hidden">
+              <Image
+                src={
+                  isImage ||
+                  "https://res.cloudinary.com/dgrg4lmww/image/upload/v1748922029/Ellipse_961_tsyc71.png"
+                }
+                alt="User Avatar"
+                width={250}
+                height={250}
+                className="object-cover w-full h-full"
+              />
+            </div>
+
             <h3 className="text-xl font-semibold text-ns-title mb-1 mt-4">
               Robert Fox
             </h3>
+
             <p className="text-ns-foreground text-center">Free Player</p>
+
+            {/* Image Upload Button */}
+            <label
+              htmlFor="upload-avatar"
+              className="absolute bottom-20 right-20 bg-[#E5E7EB] p-2 rounded-full shadow-md cursor-pointer"
+            >
+              <HiOutlineCamera />
+              <input
+                type="file"
+                id="upload-avatar"
+                className="hidden"
+                accept="image/*"
+                onChange={handleImageUpload}
+              />
+            </label>
           </div>
 
           {/*----------------- Menus ---------------- */}
