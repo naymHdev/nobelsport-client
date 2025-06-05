@@ -159,14 +159,7 @@ export default function MatchList() {
               <Link
                 className="p-6"
                 key={match.id}
-                href={`${
-                  match.status === "completed"
-                    ? `/profile/completed-match-details/${match.id}`
-                    : "#"
-                }`}
-                style={{
-                  pointerEvents: match.status === "completed" ? "auto" : "none",
-                }}
+                href={`/profile/match-details/${match.id}`}
               >
                 <Card className="px-6 bg-white shadow-none">
                   <div className="flex items-start justify-between mb-4">

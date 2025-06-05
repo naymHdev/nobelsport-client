@@ -158,7 +158,7 @@ export default function TeamList() {
                 key={match.id}
                 href={`${
                   match.status === "completed"
-                    ? `/profile/completed-match-details/${match.id}`
+                    ? `/profile/completed-team-details/${match.id}`
                     : "#"
                 }`}
                 style={{

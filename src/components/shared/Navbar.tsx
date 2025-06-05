@@ -75,7 +75,7 @@ const Navbar = () => {
               {user ? (
                 <div className=" flex items-center gap-3">
                   <div>
-                    <Link href={"/message"}>
+                    <Link href={"/messages"}>
                       <Image
                         src={notify || "/placeholder.svg"}
                         alt="Logo"
@@ -118,7 +118,7 @@ const Navbar = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={toggleMobileMenu}
-              className="md:hidden p-2 text-ns-foreground hover:text-ns-primary transition-colors"
+              className="md:hidden p-2 text-ns-title hover:text-ns-primary transition-colors"
               aria-label="Toggle mobile menu"
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}

@@ -3,7 +3,7 @@
 import { GoArrowLeft } from "react-icons/go";
 import FootballMatchCard from "./FootballMatchCard";
 
-const CompletedMatchDetails = () => {
+const ProfileMatchDetails = () => {
   return (
     <>
       <div>
@@ -23,4 +23,4 @@ const CompletedMatchDetails = () => {
   );
 };
 
-export default CompletedMatchDetails;
+export default ProfileMatchDetails;

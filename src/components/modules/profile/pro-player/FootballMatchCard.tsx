@@ -11,6 +11,8 @@ import PlayerStats from "./PlayerStats";
 import TeamDetails from "./team-details";
 
 export default function FootballMatchCard() {
+  const status = "completed";
+
   return (
     <>
       <Card className=" p-0 border-none shadow-none bg-white">
@@ -74,33 +76,37 @@ export default function FootballMatchCard() {
         <Separator className=" w-full bg-gray-300" />
 
         {/* ------------------- Match Stats ---------------- */}
-        <Card className="mt-6 p-0 border-none shadow-none bg-transparent">
-          <CardContent>
-            <div>
-              <h2 className="text-xl font-semibold text-ns-title mb-4">
-                Match Stats
-              </h2>
-              <div className="space-y-3">
-                <div className="flex justify-between md:justify-start md:gap-56 items-center">
-                  <span className="text-gray-700">Team Total Goals</span>
-                  <span className="font-semibold text-gray-900">2</span>
-                </div>
-                <div className="flex justify-between md:justify-start md:gap-56 items-center">
-                  <span className="text-gray-700">Total Team Shots</span>
-                  <span className="font-semibold text-gray-900">6</span>
-                </div>
 
-                {/* Achievement Highlight */}
-                <div className="flex items-center gap-2 mt-4 p-3 bg-yellow-50 rounded-lg">
-                  <Star className="w-5 h-5 text-yellow-500 fill-current" />
-                  <span className="text-gray-700">
-                    Scored 2 goals in one match
-                  </span>
+        {status === "completed" && (
+          <Card className="mt-6 p-0 border-none shadow-none bg-transparent">
+            <CardContent>
+              <div>
+                <h2 className="text-xl font-semibold text-ns-title mb-4">
+                  Match Stats
+                </h2>
+                <div className="space-y-3">
+                  <div className="flex justify-between md:justify-start md:gap-56 items-center">
+                    <span className="text-gray-700">Team Total Goals</span>
+                    <span className="font-semibold text-gray-900">2</span>
+                  </div>
+                  <div className="flex justify-between md:justify-start md:gap-56 items-center">
+                    <span className="text-gray-700">Total Team Shots</span>
+                    <span className="font-semibold text-gray-900">6</span>
+                  </div>
+
+                  {/* Achievement Highlight */}
+                  <div className="flex items-center gap-2 mt-4 p-3 bg-yellow-50 rounded-lg">
+                    <Star className="w-5 h-5 text-yellow-500 fill-current" />
+                    <span className="text-gray-700">
+                      Scored 2 goals in one match
+                    </span>
+                  </div>
                 </div>
               </div>
-            </div>
-          </CardContent>
-        </Card>
+            </CardContent>
+          </Card>
+        )}
+
         <Separator className=" w-full bg-gray-300" />
 
         {/* ------------------- Players Stats ---------------- */}

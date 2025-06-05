@@ -4,7 +4,7 @@ const MessagePage = () => {
   return (
     <>
       <NSContainer>
-        <div>MessagePage</div>
+        <div></div>
       </NSContainer>
     </>
   );

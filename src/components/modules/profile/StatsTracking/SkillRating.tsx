@@ -17,12 +17,12 @@ function Rating({ sport, rating }: { sport: string; rating: number }) {
   return (
     <div className="flex items-center gap-3 md:gap-6 lg:gap-20">
       <span className="w-20 text-sm text-ns-foreground">{sport}</span>
-      <div className="flex space-x-3 text-yellow-400">
+      <div className="flex md:space-x-3 text-yellow-400">
         {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((star) =>
           star <= rating ? (
-            <AiFillStar key={star} className="w-8 h-8" />
+            <AiFillStar key={star} className="lg:w-8 lg:h-8" />
           ) : (
-            <AiOutlineStar key={star} className="w-8 h-8 text-gray-300" />
+            <AiOutlineStar key={star} className="lg:w-8 lg:h-8 text-gray-300" />
           )
         )}
       </div>
