@@ -74,7 +74,7 @@ const SidebarMenus = () => {
       },
       {
         icon: <IoBookOutline className="w-6 h-6" />,
-        title: "Venue Order List",
+        title: "Venue List",
         link: "/profile/venue-order-list",
       },
       {

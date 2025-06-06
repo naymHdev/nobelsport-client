@@ -37,7 +37,9 @@ import { TbCloudDownload } from "react-icons/tb";
 import { amenities, calendarDays, venueTypes, weekDays } from "./constant";
 import { Checkbox } from "@/components/ui/checkbox";
 import SetAvailabilityModal from "./SetAvailabilityModal";
-import VenueOverview from "./venue-overview/venue-overview";
+import LogoUpload from "../buisness-account/add-logo";
+import BannerColorSettings from "../buisness-account/banner-color-settings";
+import VenueDescription from "../enterprise-account/venue-description";
 
 // Form validation schema
 const venueSchema = z.object({
@@ -113,12 +115,13 @@ export default function VenueDetails() {
 
   return (
     <div className="space-y-8 font-openSans">
-      <VenueOverview />
+      {/* ----------------- Venue Overview ---------------- */}
+      {/* <VenueOverview /> */}
       <Card className=" p-6 shadow-none border-none">
         <h1 className=" text-2xl font-extrabold text-ns-title">
           Add Multiple Venue
         </h1>
-        <p className="text-muted-foreground mt-2">
+        {/* <p className="text-muted-foreground mt-2">
           Your current plan is free,Upgrade to enable this feature
         </p>
 
@@ -126,14 +129,15 @@ export default function VenueDetails() {
           <NSButton className=" font-semibold bg-ns-secondary rounded-lg py-3 px-3">
             Upgrade Now
           </NSButton>
-        </div>
+        </div> */}
+        <LogoUpload />
       </Card>
 
       <Card className=" p-6 shadow-none border-none">
         <h1 className=" text-2xl font-extrabold">
           Branding & Design Customization
         </h1>
-        <p className="text-muted-foreground mt-2">
+        {/* <p className="text-muted-foreground mt-2">
           Your current plan is free,Upgrade to enable this feature
         </p>
 
@@ -141,7 +145,8 @@ export default function VenueDetails() {
           <NSButton className=" font-semibold bg-ns-secondary rounded-lg p-3">
             Upgrade Now
           </NSButton>
-        </div>
+        </div> */}
+        <BannerColorSettings />
       </Card>
 
       <Card className=" border-none shadow-none">
@@ -298,7 +303,7 @@ export default function VenueDetails() {
               >
                 Venue Description
               </Label>
-              <Textarea
+              {/* <Textarea
                 id="venueDescription"
                 {...register("venueDescription")}
                 className={
@@ -310,7 +315,8 @@ export default function VenueDetails() {
                 <p className="text-sm text-red-500">
                   {errors.venueDescription.message}
                 </p>
-              )}
+              )} */}
+              <VenueDescription />
             </div>
 
             {/* ------------ Upload Photos ------------ */}

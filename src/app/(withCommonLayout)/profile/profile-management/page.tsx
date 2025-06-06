@@ -1,5 +1,5 @@
 import ProfileManagement from "@/components/modules/profile/ProfileManagement";
-import VenueOwnerProfileM from "@/components/modules/profile/VenueOwnerFreeAccount/profile-management";
+import VenueOwnerProfileM from "@/components/modules/profile/venue-owner/profile-management";
 
 const ProfileManagementPage = () => {
   const role = "venueOwner";

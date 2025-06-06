@@ -7,11 +7,13 @@ import aboutVenue from "@/assets/images/venue-about.png";
 import { amenitiesOverview, availableTimes, galleryImages } from "../constant";
 import NSButton from "@/components/ui/core/NSButton";
 import { FaClock } from "react-icons/fa";
+import VenueLogoBannerSection from "../../buisness-account/venue-logo-banner";
 
 export default function VenueOverview() {
   return (
     <div className="">
       <Card className=" border-none shadow-none">
+        <VenueLogoBannerSection />
         {/* ------------------ Image Overview Section ---------------- */}
         <CardContent className="">
           <h2 className="text-2xl font-extrabold text-ns-title mb-4">
