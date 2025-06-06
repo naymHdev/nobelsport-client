@@ -20,7 +20,7 @@ const SidebarMenus = () => {
   const pathname = usePathname();
 
   // Example role, this can come from user authentication or context
-  const role = "player";
+  const role = "venueOwner";
 
   // Role-based menus
   const roleMenus = {
