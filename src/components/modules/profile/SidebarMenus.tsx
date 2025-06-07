@@ -57,11 +57,11 @@ const SidebarMenus = () => {
         title: "Profile Management",
         link: "/profile/profile-management",
       },
-      {
-        icon: <TbSmartHome className="w-6 h-6" />,
-        title: "Venue Details",
-        link: "/profile/venue-details",
-      },
+      // {
+      //   icon: <TbSmartHome className="w-6 h-6" />,
+      //   title: "Venue Details",
+      //   link: "/profile/venue-details",
+      // },
       {
         icon: <TbHomeStats className="w-6 h-6" />,
         title: "Venue Stats",

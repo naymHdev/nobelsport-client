@@ -24,6 +24,7 @@ import ViewDetailsModal from "./view-details-modal";
 import NSButton from "@/components/ui/core/NSButton";
 import { GoPlus } from "react-icons/go";
 import Link from "next/link";
+import EnterpriseVenueDetailsModal from "../enterprise-account/venue-details-modal";
 
 interface BookingData {
   id: string;
@@ -167,6 +168,8 @@ export default function VenueOrderList() {
 
   const totalPages = 4;
 
+  const role = "enterpriseUser";
+
   return (
     <Card className="w-full border-none shadow-none mx-auto">
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4 lg:pb-8">
@@ -239,8 +242,14 @@ export default function VenueOrderList() {
                   <TableCell>{booking.bookingDate}</TableCell>
                   <TableCell>{booking.accountType}</TableCell>
                   <TableCell>{getStatusBadge(booking.status)}</TableCell>
+
+                  {/* ----------------------- View Details Button ---------------- */}
                   <TableCell>
-                    <ViewDetailsModal />
+                    {role === "enterpriseUser" ? (
+                      <EnterpriseVenueDetailsModal />
+                    ) : (
+                      <ViewDetailsModal />
+                    )}
                   </TableCell>
                 </TableRow>
               ))}
