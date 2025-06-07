@@ -4,15 +4,27 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { CgProfile } from "react-icons/cg";
 import { ImStatsBars } from "react-icons/im";
-import { IoBookOutline, IoSettingsOutline } from "react-icons/io5";
-import { LuCrown } from "react-icons/lu";
+import {
+  IoBookOutline,
+  IoGameControllerOutline,
+  IoSettingsOutline,
+} from "react-icons/io5";
+import { LuCrown, LuUserPen } from "react-icons/lu";
 import { usePathname } from "next/navigation";
 import { HiMiniBars3BottomRight, HiOutlineCamera } from "react-icons/hi2";
 import Image from "next/image";
 import { TbHomeStats, TbSmartHome } from "react-icons/tb";
 import { AiOutlineBars } from "react-icons/ai";
 import { BiMessageSquareDots } from "react-icons/bi";
-import { FaRegStar } from "react-icons/fa";
+import { FaRegStar, FaRegUser } from "react-icons/fa";
+import { BsImageAlt } from "react-icons/bs";
+import {
+  MdOutlineInsertChart,
+  MdOutlineLeaderboard,
+  MdOutlinePayment,
+} from "react-icons/md";
+import { LiaPollHSolid } from "react-icons/lia";
+import { GiChart } from "react-icons/gi";
 
 const SidebarMenus = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,7 +32,7 @@ const SidebarMenus = () => {
   const pathname = usePathname();
 
   // Example role, this can come from user authentication or context
-  const role = "venueOwner";
+  const role = "teamManager";
 
   // Role-based menus
   const roleMenus = {
@@ -96,6 +108,68 @@ const SidebarMenus = () => {
         icon: <IoSettingsOutline className="w-6 h-6" />,
         title: "Settings",
         link: "/profile/settings",
+      },
+    ],
+    teamManager: [
+      {
+        icon: <CgProfile className="w-6 h-6" />,
+        title: "Profile Management",
+        link: "/profile/profile-management",
+      },
+      {
+        icon: <FaRegUser className="w-6 h-6" />,
+        title: "Player List",
+        link: "/profile/players-list",
+      },
+      {
+        icon: <LuUserPen className="w-6 h-6" />,
+        title: "Custom role",
+        link: "/profile/custom-role",
+      },
+      {
+        icon: <IoGameControllerOutline className="w-6 h-6" />,
+        title: "Team Management",
+        link: "/profile/team-management",
+      },
+      {
+        icon: <BsImageAlt className="w-6 h-6" />,
+        title: "Match Template",
+        link: "/profile/match-template",
+      },
+      {
+        icon: <AiOutlineBars className="w-6 h-6" />,
+        title: "Match Management",
+        link: "/profile/match-management",
+      },
+      {
+        icon: <MdOutlineInsertChart className="w-6 h-6" />,
+        title: "Attendance Forecast",
+        link: "/profile/attendance-forecast",
+      },
+      {
+        icon: <LiaPollHSolid className="w-6 h-6" />,
+        title: "Poll List",
+        link: "/profile/poll-list",
+      },
+      {
+        icon: <MdOutlinePayment className="w-6 h-6" />,
+        title: "Payment List",
+        link: "/profile/payment-list",
+      },
+      {
+        icon: <GiChart className="w-6 h-6" />,
+        title: "Top Ranking Player’s",
+        link: "/profile/top-ranking-player",
+      },
+      {
+        icon: <MdOutlineLeaderboard className="w-6 h-6" />,
+        title: "Leaderboard",
+        link: "/profile/leaderboard",
+      },
+      {
+        icon: <LuCrown className="w-6 h-6" />,
+        title: "Subscription ",
+        link: "/profile/subscription",
       },
     ],
   };
