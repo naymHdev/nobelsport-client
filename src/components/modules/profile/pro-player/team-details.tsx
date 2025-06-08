@@ -1,8 +1,7 @@
 "use client";
 
-import { MessageCircle, Check } from "lucide-react";
+import {  Check } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { AiOutlineMessage } from "react-icons/ai";
 import NSButton from "@/components/ui/core/NSButton";
