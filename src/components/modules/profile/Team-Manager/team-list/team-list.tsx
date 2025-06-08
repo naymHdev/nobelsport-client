@@ -1,39 +1,17 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import {
-  Calendar,
-  ChevronLeft,
-  ChevronRight,
-  Eye,
-  MessageSquare,
-  PenSquare,
-  Plus,
-} from "lucide-react";
+import { Calendar, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
 import { useDebounce } from "@/hooks/use-debounce";
 import NSButton from "@/components/ui/core/NSButton";
-
-// Types
-interface Team {
-  id: string;
-  name: string;
-  logo: string;
-  createdAt: Date;
-  isVisible: boolean;
-}
-
-// Mock data
-const mockTeams: Team[] = Array.from({ length: 20 }).map((_, i) => ({
-  id: `team-${i + 1}`,
-  name: "Victory FC",
-  logo: "/placeholder.svg?height=40&width=40",
-  createdAt: new Date(2025, 0, i + 1),
-  isVisible: true,
-}));
+import { mockTeams, Team } from "./constant";
+import MyTeams from "./my-teams";
+import CreateTeamModal from "./create-team-modal";
+import AllTeamStatus from "./all-team-status";
 
 export default function MyTeamList() {
   // State
@@ -97,18 +75,6 @@ export default function MyTeamList() {
     console.log("Filter applied:", filterDate);
   };
 
-  const handleCreateTeam = () => {
-    console.log("Create team clicked");
-  };
-
-  const handleEditTeam = (teamId: string) => {
-    console.log("Edit team:", teamId);
-  };
-
-  const handleMessageTeam = (teamId: string) => {
-    console.log("Message team:", teamId);
-  };
-
   const handleToggleVisibility = (teamId: string) => {
     setTeams((prev) =>
       prev.map((team) =>
@@ -132,39 +98,27 @@ export default function MyTeamList() {
           onValueChange={setActiveTab}
           className="w-full"
         >
-          <div className="flex items-center justify-between mb-6">
-            <TabsList className="grid w-full max-w-md grid-cols-2 h-10 p-0 bg-transparent border-b border-gray-200">
+          <div className="flex flex-wrap md:flex-nowrap gap-6 md:gap-0 items-center justify-between mb-6">
+            <TabsList className="grid w-full max-w-md grid-cols-2 h-10 p-0 bg-transparent border-gray-200">
               <TabsTrigger
                 value="my-teams"
-                className={cn(
-                  "data-[state=active]:border-b-2 data-[state=active]:border-blue-600 data-[state=active]:shadow-none rounded-none h-10",
-                  "text-gray-600 data-[state=active]:text-blue-600 font-medium"
-                )}
+                className=" font-semibold px-4 py-2 text-gray-700 data-[state=active]:border-b-2 rounded-none data-[state=active]:border-b-ns-title data-[state=active]:font-semibold focus:outline-none whitespace-nowrap shadow-none data-[state=active]:shadow-none data-[state=active]:rounded-none transition-colors"
               >
                 My Team List
               </TabsTrigger>
               <TabsTrigger
                 value="all-teams"
-                className={cn(
-                  "data-[state=active]:border-b-2 data-[state=active]:border-blue-600 data-[state=active]:shadow-none rounded-none h-10",
-                  "text-gray-600 data-[state=active]:text-blue-600 font-medium"
-                )}
+                className=" font-semibold rounded-none px-4 py-2 text-gray-700 data-[state=active]:border-b-2 data-[state=active]:border-b-ns-title data-[state=active]:font-semibold focus:outline-none whitespace-nowrap shadow-none data-[state=active]:shadow-none data-[state=active]:rounded-none transition-colors"
               >
                 All Team Status
               </TabsTrigger>
             </TabsList>
 
-            <Button
-              onClick={handleCreateTeam}
-              className="bg-green-600 hover:bg-green-700 text-white"
-            >
-              <Plus className="h-4 w-4 mr-2" />
-              Create Team
-            </Button>
+            <CreateTeamModal />
           </div>
 
           <div className="flex flex-col sm:flex-row items-center gap-4 mb-6">
-            <div className="relative flex-1">
+            <div className="relative flex-1 w-full">
               <Input
                 type="date"
                 placeholder="Filter by Date"
@@ -188,76 +142,26 @@ export default function MyTeamList() {
           </div>
 
           <TabsContent value="my-teams" className="mt-0 p-0">
-            {isLoading ? (
-              <div className="flex justify-center items-center py-12">
-                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
-              </div>
-            ) : getCurrentPageItems().length > 0 ? (
-              <div className="space-y-4">
-                {getCurrentPageItems().map((team) => (
-                  <div
-                    key={team.id}
-                    className="border border-gray-200 rounded-lg p-4 flex items-center justify-between"
-                  >
-                    <div className="flex items-center space-x-3">
-                      <img
-                        src={team.logo || "/placeholder.svg"}
-                        alt={`${team.name} logo`}
-                        className="w-10 h-10 rounded-full bg-yellow-400"
-                      />
-                      <span className="font-medium">{team.name}</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        onClick={() => handleToggleVisibility(team.id)}
-                        className="text-amber-500 hover:text-amber-600"
-                      >
-                        <Eye className="h-5 w-5" />
-                      </Button>
-                      <Button
-                        onClick={() => handleEditTeam(team.id)}
-                        className="bg-amber-500 hover:bg-amber-600 text-white"
-                        size="sm"
-                      >
-                        <PenSquare className="h-4 w-4 mr-1" />
-                        Edit Team
-                      </Button>
-                      <Button
-                        onClick={() => handleMessageTeam(team.id)}
-                        className="bg-blue-600 hover:bg-blue-700 text-white"
-                        size="sm"
-                      >
-                        <MessageSquare className="h-4 w-4 mr-1" />
-                        Message Team
-                      </Button>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <div className="text-center py-12 text-gray-500">
-                No teams found. Try adjusting your filter or create a new team.
-              </div>
-            )}
+            <MyTeams
+              getCurrentPageItems={getCurrentPageItems}
+              isLoading={isLoading}
+              handleToggleVisibility={handleToggleVisibility}
+            />
           </TabsContent>
 
           <TabsContent value="all-teams" className="mt-0 p-0">
-            <div className="text-center py-12 text-gray-500">
-              All team status information would be displayed here.
-            </div>
+            <AllTeamStatus />
           </TabsContent>
 
-          {/* Pagination */}
+          {/* ------------------ Pagination ---------------- */}
           {filteredTeams.length > 0 && (
-            <div className="flex items-center justify-center mt-6 space-x-1">
+            <div className="flex items-center justify-end mt-6 space-x-1">
               <Button
                 variant="ghost"
                 size="icon"
                 onClick={() => handlePageChange(Math.max(1, currentPage - 1))}
                 disabled={currentPage === 1}
-                className="h-8 w-8"
+                className="h-8 w-8 border"
               >
                 <ChevronLeft className="h-4 w-4" />
               </Button>
@@ -270,7 +174,7 @@ export default function MyTeamList() {
                     variant={currentPage === page ? "default" : "ghost"}
                     size="sm"
                     onClick={() => handlePageChange(page)}
-                    className={`h-8 w-8 ${
+                    className={`h-8 w-8 border ${
                       currentPage === page
                         ? "bg-blue-600 text-white hover:bg-blue-700"
                         : "text-gray-600 hover:text-gray-900"
@@ -288,7 +192,7 @@ export default function MyTeamList() {
                   handlePageChange(Math.min(TOTAL_PAGES, currentPage + 1))
                 }
                 disabled={currentPage === TOTAL_PAGES}
-                className="h-8 w-8"
+                className="h-8 w-8 border"
               >
                 <ChevronRight className="h-4 w-4" />
               </Button>
