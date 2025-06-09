@@ -7,6 +7,7 @@ import { ArrowLeft } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import clubLogo from "@/assets/images/Dragons FC logo.png";
+import Link from "next/link";
 
 export function ManagementMatchDetails() {
   const router = useRouter();
@@ -153,13 +154,17 @@ export function ManagementMatchDetails() {
         </CardContent>
 
         {/* ------------------ Buttons ---------------- */}
-        <section className=" flex items-center justify-between gap-6 px-6">
-          <NSButton className=" w-full bg-ns-primary text-white uppercase font-bold rounded-lg py-4">
-            Book Venue
-          </NSButton>
-          <NSButton className=" w-full bg-orange-400 text-white uppercase font-bold rounded-lg py-4">
-            Team Line up
-          </NSButton>
+        <section className="flex items-center justify-between gap-6 px-6">
+          <Link href="/venue/1" className="w-full">
+            <NSButton className="w-full bg-ns-primary text-white uppercase font-bold rounded-lg py-4">
+              Book Venue
+            </NSButton>
+          </Link>
+          <Link href="/profile/match-management/team-details" className="w-full">
+            <NSButton className="w-full bg-orange-400 text-white uppercase font-bold rounded-lg py-4">
+              Team Line up
+            </NSButton>
+          </Link>
         </section>
       </Card>
     </>
