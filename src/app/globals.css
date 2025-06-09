@@ -11,6 +11,14 @@
   --color-ns-foreground: #4b5563;
   --color-ns-secondary: #1b5fee;
   --color-ns-title: #111827;
+  --color-ns-supportive-yellow: #ffb81c;
+  --color-ns-red: #e03c31;
+  --color-ns-light-blue: #1b5fee;
+  --color-ns-light: #f5f5f5;
+  --color-ns-gray: #4b5563;
+  --color-ns-light-white: #e5e7eb;
+  --color-ns-neutral-dark: #333333;
+  --color-ns-white: #ffffff;
 }
 
 .line-clamp-2 {

@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { MessageCircle, Check, X, Send, Eye } from "lucide-react";
 import Link from "next/link";
+import { IoEye } from "react-icons/io5";
 
 interface TeamCardProps {
   id: string;
@@ -152,7 +153,7 @@ export function TeamCard({
                 size="icon"
                 className="text-amber-500 hover:text-amber-600 hover:cursor-pointer"
               >
-                <Eye className="h-5 w-5" />
+                <IoEye className="h-5 w-5" />
               </Button>
             </Link>
             {getStatusBadge()}
