@@ -169,7 +169,7 @@ const SidebarMenus = () => {
       {
         icon: <LuCrown className="w-6 h-6" />,
         title: "Subscription ",
-        link: "/profile/subscription",
+        link: "/profile/team-manager-subscription",
       },
     ],
   };

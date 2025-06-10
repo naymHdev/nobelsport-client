@@ -55,7 +55,7 @@ const TopRankingPlayers = () => {
           </div>
 
           {/* Players Table */}
-          <div className="border rounded-lg overflow-hidden">
+          <div className="">
             <Table>
               <TableHeader>
                 <TableRow className="bg-ns-primary hover:bg-green-800">
