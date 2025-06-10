@@ -72,13 +72,16 @@ export function MatchCard({ match, ...handlers }: MatchCardProps) {
       case "unpublished":
         return (
           <div className="flex gap-2">
-            <Button
-              size="sm"
-              variant="default"
-              onClick={() => handlers.onViewBalance?.(match.id)}
-            >
-              View Team Balance
-            </Button>
+            <Link href={`/profile/match-management/team-balance`}>
+              <Button
+                className="hover:cursor-pointer"
+                size="sm"
+                variant="default"
+                onClick={() => handlers.onViewBalance?.(match.id)}
+              >
+                View Team Balance
+              </Button>
+            </Link>
             <Button
               size="sm"
               variant="default"
