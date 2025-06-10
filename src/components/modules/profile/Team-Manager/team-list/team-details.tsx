@@ -1,12 +1,13 @@
 "use client";
 
-import { ArrowLeft, Phone, Mail, MapPin, Users } from "lucide-react";
+import { Phone, Mail, MapPin, Users } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import fbLogo from "@/assets/images/fb-logo.png";
 import Image from "next/image";
+import NSBackButton from "@/components/ui/core/NSBackButton";
 
 interface ProfileDetailsProps {
   onBack?: () => void;
@@ -16,7 +17,6 @@ interface ProfileDetailsProps {
 }
 
 export default function TeamManagerTeamDetails({
-  onBack,
   onAccept,
   onReject,
   onMessage,
@@ -24,12 +24,7 @@ export default function TeamManagerTeamDetails({
   return (
     <div className="space-y-6 bg-white rounded-xl p-6 font-openSans">
       {/* Header */}
-      <div className="flex items-center gap-3">
-        <Button variant="ghost" size="icon" onClick={onBack}>
-          <ArrowLeft className="h-4 w-4" />
-        </Button>
-        <h1 className="text-xl font-semibold">View Details</h1>
-      </div>
+      <NSBackButton label="View Details" />
 
       {/* Profile Header */}
       <Card className=" border-none">

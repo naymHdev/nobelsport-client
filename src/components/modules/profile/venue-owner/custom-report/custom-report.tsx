@@ -24,7 +24,6 @@ export default function CustomReport() {
       venue: selectedVenue,
       date: selectedDate,
     });
-    // Here you would typically fetch filtered data
   };
 
   return (

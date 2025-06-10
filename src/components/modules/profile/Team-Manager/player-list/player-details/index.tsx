@@ -1,25 +1,16 @@
 "use client";
 
-import { ArrowLeft } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useRouter } from "next/navigation";
 import PlayerInfo from "./player-information";
 import PerformanceStats from "./performance-stats";
 import PlayerRating from "./player-rating";
+import NSBackButton from "@/components/ui/core/NSBackButton";
 
 const TeamManagerPlayerDetails = () => {
-  const router = useRouter();
-
   return (
     <div className=" bg-ns-white rounded-lg p-6 font-openSans">
       {/* Header */}
-      <div className="flex items-center gap-3">
-        <Button variant="ghost" size="icon" onClick={() => router.back()}>
-          <ArrowLeft className="h-4 w-4" />
-        </Button>
-        <h1 className="text-xl font-semibold">View Details</h1>
-      </div>
+      <NSBackButton label="Player Details" />
 
       {/* Navigation Tabs */}
       <Tabs defaultValue="player-info" className="mt-6">

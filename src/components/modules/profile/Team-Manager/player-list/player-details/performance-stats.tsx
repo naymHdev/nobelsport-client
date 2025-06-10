@@ -45,7 +45,7 @@ const PerformanceStats = () => {
       </h1>
 
       {/* Table */}
-      <div className="border rounded-lg overflow-hidden">
+      <div className="rounded-lg overflow-hidden">
         <Table className="">
           <TableHeader>
             <TableRow className=" bg-ns-primary hover:bg-green-600">
