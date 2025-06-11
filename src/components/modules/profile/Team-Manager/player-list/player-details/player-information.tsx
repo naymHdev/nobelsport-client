@@ -5,6 +5,7 @@ import Image from "next/image";
 import profileImg from "@/assets/images/john_smith.png";
 import { FaClock, FaStar } from "react-icons/fa";
 import { AiOutlineMessage } from "react-icons/ai";
+import PlayerChemistryInsights from "./player-chemistry-insights";
 const PlayerInfo = () => {
   const renderStars = (rating: number) => {
     return Array.from({ length: 5 }, (_, i) => (
@@ -60,6 +61,9 @@ const PlayerInfo = () => {
             </div>
           </div>
         </div>
+
+        {/* ------------------ Player Chemistry Insights ---------------- */}
+        <PlayerChemistryInsights />
 
         {/* Personal Information */}
         <Card className="p-0 border-none  shadow-none">

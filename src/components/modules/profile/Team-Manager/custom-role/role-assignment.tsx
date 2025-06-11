@@ -6,7 +6,7 @@ import { Plus, UserCheck, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Avatar } from "@/components/ui/avatar";
 import {
   Dialog,
   DialogContent,
@@ -15,6 +15,10 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import profileImg from "@/assets/images/john_smith.png";
+import Image from "next/image";
+import NSButton from "@/components/ui/core/NSButton";
+import RoleAssignModal from "./assign-role-modal";
 
 interface User {
   id: string;
@@ -67,41 +71,39 @@ function UserCard({ user }: { user: User }) {
   };
 
   return (
-    <Card className="w-full">
-      <CardContent className="p-6">
-        <div className="flex items-start gap-3 mb-4">
-          <Avatar className="h-10 w-10">
-            <AvatarImage
-              src={user.avatar || "/placeholder.svg"}
-              alt={user.name}
-            />
-            <AvatarFallback>
-              {user.name
-                .split(" ")
-                .map((n) => n[0])
-                .join("")}
-            </AvatarFallback>
-          </Avatar>
-          <div className="flex-1">
-            <h3 className="font-semibold text-gray-900">{user.name}</h3>
-            <Badge
-              variant="secondary"
-              className="mt-1 bg-blue-100 text-blue-700 hover:bg-blue-100"
-            >
+    <Card className="w-full font-openSans border-none">
+      <CardContent className="md:p-6">
+        <div className="flex items-center justify-between gap-3 mb-4">
+          <div className=" flex flex-col md:flex-row md:items-center gap-3">
+            <Avatar className="h-8 w-8">
+              <Image
+                src={profileImg}
+                alt={user.name}
+                width={50}
+                height={50}
+                className=" rounded-full w-8 h-8 object-cover"
+              />
+            </Avatar>
+            <h3 className="md:text-lg font-semibold md:font-bold text-ns-title">
+              {user.name}
+            </h3>
+          </div>
+          <div>
+            <Badge className="mt-1 bg-blue-100 text-blue-700 hover:bg-blue-100 rounded-full px-2 py-1">
               {user.role}
             </Badge>
           </div>
         </div>
 
         <div className="mb-4">
-          <h4 className="text-sm font-medium text-gray-700 mb-2">
+          <h4 className="text-sm font-semibold text-ns-title mb-2">
             Permissions
           </h4>
           <ul className="space-y-1">
             {user.permissions.map((permission, index) => (
               <li
                 key={index}
-                className="text-sm text-gray-600 flex items-center gap-2"
+                className="text-[16px] text-ns-foreground flex items-center gap-2"
               >
                 <div className="w-1 h-1 bg-gray-400 rounded-full" />
                 {permission}
@@ -116,7 +118,7 @@ function UserCard({ user }: { user: User }) {
             onOpenChange={setIsChangeDialogOpen}
           >
             <DialogTrigger asChild>
-              <Button className="flex-1 bg-blue-600 hover:bg-blue-700">
+              <Button className="flex-1 bg-blue-600 hover:bg-blue-700 py-5 hover:cursor-pointer">
                 <UserCheck className="w-4 h-4 mr-2" />
                 Change
               </Button>
@@ -145,9 +147,9 @@ function UserCard({ user }: { user: User }) {
             open={isRemoveDialogOpen}
             onOpenChange={setIsRemoveDialogOpen}
           >
-            <DialogTrigger asChild>
-              <Button variant="outline" size="icon">
-                <Trash2 className="w-4 h-4" />
+            <DialogTrigger asChild className="flex-1 w-full">
+              <Button className=" bg-ns-light hover:bg-ns-foreground hover:text-ns-light hover:cursor-pointer text-ns-title py-5">
+                <Trash2 className="w-4 h-4" /> Remove
               </Button>
             </DialogTrigger>
             <DialogContent>
@@ -197,10 +199,7 @@ export default function RoleAssignment() {
             onOpenChange={setIsAssignDialogOpen}
           >
             <DialogTrigger asChild>
-              <Button className="bg-green-600 hover:bg-green-700">
-                <Plus className="w-4 h-4 mr-2" />
-                Assign Role
-              </Button>
+              <RoleAssignModal />
             </DialogTrigger>
             <DialogContent>
               <DialogHeader>
@@ -224,7 +223,7 @@ export default function RoleAssignment() {
         </div>
 
         {/* User Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {users.map((user) => (
             <UserCard key={user.id} user={user} />
           ))}

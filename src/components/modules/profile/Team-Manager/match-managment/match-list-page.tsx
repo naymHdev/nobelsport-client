@@ -8,6 +8,7 @@ import { MatchFilters } from "./match-filters";
 import { MatchCard } from "./match-card";
 import { Pagination } from "./pagination";
 import Link from "next/link";
+import MatchManagementAllMatchList from "./all-match-list";
 
 export default function MatchListPage() {
   const {
@@ -59,7 +60,7 @@ export default function MatchListPage() {
           </TabsTrigger>
         </TabsList>
 
-        <TabsContent value={activeTab} className="space-y-6 mt-8">
+        <TabsContent defaultValue={"my"} value="my" className="space-y-6 mt-8">
           {/* Filters */}
           <MatchFilters
             filters={filters}
@@ -99,6 +100,11 @@ export default function MatchListPage() {
           {pagination.totalPages > 1 && (
             <Pagination pagination={pagination} onPageChange={setCurrentPage} />
           )}
+        </TabsContent>
+
+        {/* ---------------------- All Match List ---------------------- */}
+        <TabsContent value="all">
+          <MatchManagementAllMatchList />
         </TabsContent>
       </Tabs>
     </div>

@@ -1,4 +1,4 @@
-import CreateMatchForm from "@/components/modules/profile/Team-Manager/match-managment/create-match-form";
+import CreateMatchForm from "@/components/modules/profile/Team-Manager/match-managment/create-team-form";
 
 const CreateTeamPage = () => {
   return (

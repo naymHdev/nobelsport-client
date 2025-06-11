@@ -82,13 +82,15 @@ export function MatchCard({ match, ...handlers }: MatchCardProps) {
                 View Team Balance
               </Button>
             </Link>
-            <Button
-              size="sm"
-              variant="default"
-              onClick={() => handlers.onPublishMatch?.(match.id)}
-            >
-              Publish Match
-            </Button>
+            <Link href={`/profile/match-management/create-match`}>
+              <Button
+                size="sm"
+                variant="default"
+                onClick={() => handlers.onPublishMatch?.(match.id)}
+              >
+                Publish Match
+              </Button>
+            </Link>
           </div>
         );
       case "archived":
