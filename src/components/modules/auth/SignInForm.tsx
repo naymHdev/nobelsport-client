@@ -12,16 +12,28 @@ import Image from "next/image";
 import authBg from "../../../assets/images/auth-bg.png";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import Link from "next/link";
+import { useLoginUserMutation } from "@/redux/api/authApi";
 
 export default function SignInForm() {
   const [rememberMe, setRememberMe] = useState(false);
+
+  const [postSignIn] = useLoginUserMutation();
 
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit: SubmitHandler<FieldValues> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+    console.log(data);
+
+    try {
+      const res = await postSignIn(data).unwrap();
+      console.log("res", res);
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
 
   return (
     <div className="min-h-screen relative flex items-center justify-center p-4">

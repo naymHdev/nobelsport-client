@@ -15,18 +15,50 @@ import Image from "next/image";
 import { Card } from "@/components/ui/card";
 import { SlBadge } from "react-icons/sl";
 import playerImg from "@/assets/images/john_smith.png";
+import NSButton from "@/components/ui/core/NSButton";
+import Link from "next/link";
 
 const players = [
-  { id: 1, name: "Jerome Bell", goals: 12, assists: 8, isTop: true },
-  { id: 2, name: "Jerome Bell", goals: 12, assists: 8, isTop: false },
-  { id: 3, name: "Jerome Bell", goals: 12, assists: 8, isTop: false },
-  { id: 4, name: "Jerome Bell", goals: 12, assists: 8, isTop: false },
-  { id: 5, name: "Jerome Bell", goals: 12, assists: 8, isTop: false },
-  { id: 6, name: "Jerome Bell", goals: 12, assists: 8, isTop: false },
-  { id: 7, name: "Jerome Bell", goals: 12, assists: 8, isTop: false },
-  { id: 8, name: "Jerome Bell", goals: 12, assists: 8, isTop: false },
-  { id: 9, name: "Jerome Bell", goals: 12, assists: 8, isTop: false },
-  { id: 10, name: "Jerome Bell", goals: 12, assists: 8, isTop: false },
+  {
+    id: 1,
+    name: "Jerome Bell",
+    goals: 12,
+    assists: 8,
+    yellowCards: 2,
+    redCards: 1,
+  },
+  {
+    id: 2,
+    name: "Cody Fisher",
+    goals: 10,
+    assists: 7,
+    yellowCards: 3,
+    redCards: 0,
+  },
+  {
+    id: 3,
+    name: "Jenny Wilson",
+    goals: 9,
+    assists: 9,
+    yellowCards: 1,
+    redCards: 1,
+  },
+  {
+    id: 4,
+    name: "Ronald Richards",
+    goals: 8,
+    assists: 6,
+    yellowCards: 0,
+    redCards: 0,
+  },
+  {
+    id: 5,
+    name: "Floyd Miles",
+    goals: 7,
+    assists: 5,
+    yellowCards: 2,
+    redCards: 1,
+  },
 ];
 
 const TopRankingPlayers = () => {
@@ -55,10 +87,10 @@ const TopRankingPlayers = () => {
           </div>
 
           {/* Players Table */}
-          <div className="">
+          <div className=" rounded-lg">
             <Table>
               <TableHeader>
-                <TableRow className="bg-ns-primary hover:bg-green-800">
+                <TableRow className="bg-ns-primary hover:bg-green-800 rounded-lg">
                   <TableHead className="text-white font-medium">
                     Ranking
                   </TableHead>
@@ -66,24 +98,33 @@ const TopRankingPlayers = () => {
                     Player Name
                   </TableHead>
                   <TableHead className="text-white font-medium text-center">
-                    GOALS
+                    Goals Scored
                   </TableHead>
                   <TableHead className="text-white font-medium text-center">
                     Assists
                   </TableHead>
+                  <TableHead className="text-white font-medium text-center">
+                    Yellow Cards
+                  </TableHead>
+                  <TableHead className="text-white font-medium text-center">
+                    Red Cards
+                  </TableHead>
+                  <TableHead className="text-white font-medium text-center">
+                    Action
+                  </TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {players.map((player, index) => (
+                {players.map((player) => (
                   <TableRow key={player.id} className="hover:bg-gray-50">
                     <TableCell className="w-20 py-4">
-                      {player.isTop ? (
+                      {player ? (
                         <div className="flex items-center justify-center w-8 h-8 rounded font-medium">
                           <SlBadge className=" size-6 text-ns-supportive-yellow" />
                         </div>
                       ) : (
                         <div className="flex items-center justify-center w-8 h-8 bg-blue-500 rounded-full text-white font-medium">
-                          {player.id}
+                          1
                         </div>
                       )}
                     </TableCell>
@@ -110,6 +151,23 @@ const TopRankingPlayers = () => {
                     </TableCell>
                     <TableCell className="text-center">
                       <span className="font-medium">{player.assists}</span>
+                    </TableCell>
+                    <TableCell className="text-center">
+                      <span className="font-medium">{player.yellowCards}</span>
+                    </TableCell>
+                    <TableCell className="text-center">
+                      <span className="font-medium">{player.redCards}</span>
+                    </TableCell>
+                    <TableCell className="text-center">
+                      <Link
+                        href={
+                          "/profile/top-ranking-player/set-player-performance"
+                        }
+                      >
+                        <NSButton className=" rounded-lg bg-ns-light-blue">
+                          Set Performance
+                        </NSButton>
+                      </Link>
                     </TableCell>
                   </TableRow>
                 ))}
