@@ -9,17 +9,39 @@ import Locations from "../Locations";
 import TopBar from "./TopBar";
 import logo from "../../assets/images/nb-sport-logo.png";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import notify from "@/assets/icons/message-icon.png";
 import { IoIosNotificationsOutline } from "react-icons/io";
 
 const Navbar = () => {
-  const pathname = usePathname();
+  // const [country, setCountry] = useState(null);
+  // const [loading, setLoading] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isRole, setIsRole] = useState<string | null>(null);
 
-  const user = true;
+  // useEffect(() => {
+  //   fetch("https://restcountries.com/v3.1/region/europe")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setCountry(data[0]);
+  //       setLoading(false);
+  //     })
+  //     .catch((err) => {
+  //       console.error("Error fetching country:", err);
+  //       setLoading(false);
+  //     });
+  // }, []);
+
+  // console.log("country------------", country);
+
+  useEffect(() => {
+    const storedRole = localStorage.getItem("userRole");
+    setIsRole(storedRole);
+  }, []);
+
+  const pathname = usePathname();
 
   const navLinks = [
     { href: "/", label: "Home" },
@@ -72,7 +94,9 @@ const Navbar = () => {
 
             {/* Desktop Actions */}
             <div className=" flex items-center gap-3 lg:gap-6">
-              {user ? (
+              {isRole === "player" ||
+              isRole === "venueOwner" ||
+              isRole === "teamManager" ? (
                 <div className=" flex items-center gap-3">
                   <div>
                     <Link href={"/messages"}>

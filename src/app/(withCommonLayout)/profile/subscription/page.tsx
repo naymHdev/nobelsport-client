@@ -1,6 +1,6 @@
 import SubsCriptions from "@/components/modules/profile/Subscriptions";
 
-const SubscriptionPage = () => {
+const SubscriptionPage = async () => {
   return (
     <>
       <div className=" mb-10">

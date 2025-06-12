@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import football from "../../../assets/icons//footbal.png";
@@ -5,8 +7,24 @@ import manager from "../../../assets/icons/manager.png";
 import owner from "../../../assets/icons/owner.png";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function NoblesportLanding() {
+  const router = useRouter();
+
+  const handleRoleSelection = (role: string) => {
+    localStorage.setItem("userRole", role);
+
+    // Redirect user based on the selected role
+    if (role === "player") {
+      router.push("/profile");
+    } else if (role === "venueOwner") {
+      router.push("/profile");
+    } else if (role === "teamManager") {
+      router.push("/profile");
+    }
+  };
+
   return (
     <div className=" py-16 font-openSans">
       <div className="max-w-6xl mx-auto">
@@ -43,8 +61,11 @@ export default function NoblesportLanding() {
                 ease
               </p>
 
-              <Link href="/sign-up">
-                <Button className=" mt-8 w-full bg-ns-secondary hover:bg-blue-700 hover:cursor-pointer text-white py-6 rounded-lg font-medium">
+              <Link href="/profile">
+                <Button
+                  onClick={() => handleRoleSelection("player")}
+                  className=" mt-8 w-full bg-ns-secondary hover:bg-blue-700 hover:cursor-pointer text-white py-6 rounded-lg font-medium"
+                >
                   Join as Player
                 </Button>
               </Link>
@@ -72,7 +93,10 @@ export default function NoblesportLanding() {
                 Manage your team, schedule matches, and track performance
               </p>
 
-              <Button className=" mt-8 w-full bg-ns-primary hover:bg-green-900 hover:cursor-pointer text-white py-6 rounded-lg font-medium">
+              <Button
+                onClick={() => handleRoleSelection("venueOwner")}
+                className=" mt-8 w-full bg-ns-primary hover:bg-green-900 hover:cursor-pointer text-white py-6 rounded-lg font-medium"
+              >
                 Join as Manager
               </Button>
             </CardContent>
@@ -99,7 +123,10 @@ export default function NoblesportLanding() {
                 List your venue, manage bookings, and grow your business
               </p>
 
-              <Button className=" mt-8 w-full bg-[#F6AD0E] hover:bg-yellow-700 hover:cursor-pointer text-white py-6 rounded-lg font-medium">
+              <Button
+                onClick={() => handleRoleSelection("teamManager")}
+                className=" mt-8 w-full bg-[#F6AD0E] hover:bg-yellow-700 hover:cursor-pointer text-white py-6 rounded-lg font-medium"
+              >
                 Join as Owner
               </Button>
             </CardContent>

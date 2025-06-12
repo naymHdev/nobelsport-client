@@ -25,14 +25,28 @@ import {
 } from "react-icons/md";
 import { LiaPollHSolid } from "react-icons/lia";
 import { GiChart } from "react-icons/gi";
+import { IoMdLogOut } from "react-icons/io";
 
 const SidebarMenus = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isImage, setIsImage] = useState<string | null>(null);
+  const [isRole, setIsRole] = useState<string | null>(null);
   const pathname = usePathname();
 
+  useEffect(() => {
+    const storedRole = localStorage.getItem("userRole");
+    setIsRole(storedRole);
+  }, []);
+
+  const handleLogout = () => {
+    document.cookie = "token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+
+    localStorage.removeItem("userRole");
+    window.location.href = "/";
+  };
+
   // Example role, this can come from user authentication or context
-  const role = "teamManager";
+  const role = isRole;
 
   // Role-based menus
   const roleMenus = {
@@ -281,6 +295,15 @@ const SidebarMenus = () => {
                 </Link>
               );
             })}
+            <div
+              onClick={handleLogout}
+              className={`flex items-center gap-3 mt-3 px-4 py-2 hover:cursor-pointer`}
+            >
+              <span className={``}>
+                <IoMdLogOut className="w-6 h-6" />
+              </span>
+              <span>Log Out</span>
+            </div>
           </nav>
         </div>
       </aside>
