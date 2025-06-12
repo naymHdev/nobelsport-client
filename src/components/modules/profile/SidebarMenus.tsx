@@ -208,6 +208,14 @@ const SidebarMenus = () => {
     return () => window.removeEventListener("keydown", handleEsc);
   }, []);
 
+  const formatRole = (role: string) =>
+    role
+      ?.split(" ")
+      ?.map((word) => word?.charAt(0)?.toUpperCase() + word?.slice(1))
+      ?.join(" ");
+
+  const displayRole = formatRole(isRole?.replace(/([A-Z])/g, " $1")?.trim());
+
   return (
     <>
       {/* Mobile Hamburger Button */}
@@ -243,7 +251,9 @@ const SidebarMenus = () => {
             <h3 className="text-xl font-semibold text-ns-title mb-1 mt-4">
               Robert Fox
             </h3>
-            <p className="text-ns-foreground text-center">Free Player</p>
+            <p className="text-ns-foreground text-center">
+              {displayRole as string}
+            </p>
 
             {/* Image Upload Button */}
             <label

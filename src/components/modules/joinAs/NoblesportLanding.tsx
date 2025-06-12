@@ -94,7 +94,7 @@ export default function NoblesportLanding() {
               </p>
 
               <Button
-                onClick={() => handleRoleSelection("venueOwner")}
+                onClick={() => handleRoleSelection("teamManager")}
                 className=" mt-8 w-full bg-ns-primary hover:bg-green-900 hover:cursor-pointer text-white py-6 rounded-lg font-medium"
               >
                 Join as Manager
@@ -124,7 +124,7 @@ export default function NoblesportLanding() {
               </p>
 
               <Button
-                onClick={() => handleRoleSelection("teamManager")}
+                onClick={() => handleRoleSelection("venueOwner")}
                 className=" mt-8 w-full bg-[#F6AD0E] hover:bg-yellow-700 hover:cursor-pointer text-white py-6 rounded-lg font-medium"
               >
                 Join as Owner
