@@ -55,14 +55,14 @@ export function MatchCard({ match, ...handlers }: MatchCardProps) {
           <div className="flex gap-2">
             <Button
               size="sm"
-              className="bg-green-600 hover:bg-green-700"
+              className="bg-green-600 hover:bg-green-700 hover:cursor-pointer"
               onClick={() => handlers.onBookVenue?.(match.id)}
             >
               Book Venue
             </Button>
             <Button
               size="sm"
-              className="bg-orange-500 hover:bg-orange-600"
+              className="bg-orange-500 hover:bg-orange-600 hover:cursor-pointer"
               onClick={() => handlers.onSendLineup?.(match.id)}
             >
               Send Line-up
@@ -86,6 +86,7 @@ export function MatchCard({ match, ...handlers }: MatchCardProps) {
               <Button
                 size="sm"
                 variant="default"
+                className="hover:cursor-pointer"
                 onClick={() => handlers.onPublishMatch?.(match.id)}
               >
                 Publish Match
@@ -98,14 +99,14 @@ export function MatchCard({ match, ...handlers }: MatchCardProps) {
           <div className="flex gap-2">
             <Button
               size="sm"
-              className="bg-green-600 hover:bg-green-700"
+              className="bg-green-600 hover:bg-green-700 hover:cursor-pointer"
               onClick={() => handlers.onMarkCompleted?.(match.id)}
             >
               Mark as Completed
             </Button>
             <Button
               size="sm"
-              className="bg-purple-600 hover:bg-purple-700"
+              className="bg-purple-600 hover:bg-purple-700 hover:cursor-pointer"
               onClick={() => handlers.onWriteAnnouncements?.(match.id)}
             >
               Write Match Announcements
@@ -114,13 +115,28 @@ export function MatchCard({ match, ...handlers }: MatchCardProps) {
         );
       case "completed":
         return (
-          <Button
-            size="sm"
-            variant="default"
-            onClick={() => handlers.onViewPerformance?.(match.id)}
-          >
-            See Player's Performance
-          </Button>
+          <div className=" flex gap-2">
+            <Link href={`/profile/match-management/set-player-performance`}>
+              <Button
+                size="sm"
+                variant="default"
+                className="hover:cursor-pointer"
+                onClick={() => handlers.onViewPerformance?.(match.id)}
+              >
+                Set Player's Performance
+              </Button>
+            </Link>
+            <Link href={`/profile/match-management/set-winner`}>
+              <Button
+                size="sm"
+                variant="default"
+                className=" bg-ns-supportive-yellow text-white hover:bg-ns-supportive-yellow/80 hover:cursor-pointer"
+                onClick={() => handlers.onViewPerformance?.(match.id)}
+              >
+                Set Winner
+              </Button>
+            </Link>
+          </div>
         );
       default:
         return null;
