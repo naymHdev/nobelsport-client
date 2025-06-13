@@ -6,6 +6,7 @@ import { ChevronDown } from "lucide-react";
 import bd from "../assets/icons/bangladesh.png";
 import usa from "../assets/icons/usa-flag.png";
 import fr from "../assets/icons/france.png";
+import { Select, SelectContent, SelectItem, SelectTrigger } from "./ui/select";
 
 const languages = [
   {
@@ -27,48 +28,43 @@ const languages = [
 
 const LanguageSelector = () => {
   const [selected, setSelected] = useState(languages[0]);
-  const [open, setOpen] = useState(false);
 
   return (
-    <div className="relative inline-block text-left ">
-      <button
-        onClick={() => setOpen(!open)}
-        className="flex items-center gap-2 border px-3 py-1.5 border-none w-[133px] h-[29px]"
+    <div className="relative inline-block text-left">
+      <Select
+        value={selected.code}
+        onValueChange={(value) => {
+          const language = languages.find((lang) => lang.code === value);
+          if (language) setSelected(language);
+        }}
       >
-        <Image
-          src={selected.flag}
-          alt={selected.name}
-          width={20}
-          height={15}
-          className="rounded-sm "
-        />
-        <span className="text-sm">{selected.name}</span>
-        <ChevronDown size={16} />
-      </button>
-
-      {open && (
-        <div className="absolute z-50 mt-2">
+        <SelectTrigger className="focus:outline-none focus-visible:ring-0 focus-visible:border-none border-none shadow-none">
+          <Image
+            src={selected.flag}
+            alt={selected.name}
+            width={40}
+            height={40}
+            className="rounded-sm"
+          />
+          <span className="text-sm">{selected.name}</span>
+        </SelectTrigger>
+        <SelectContent className="absolute z-50 mt-2 w-full bg-white border-none">
           {languages.map((lang) => (
-            <button
-              key={lang.code}
-              onClick={() => {
-                setSelected(lang);
-                setOpen(false);
-              }}
-              className="w-full px-4 py-2 text-left hover:bg-gray-100 flex items-center gap-2"
-            >
-              <Image
-                src={lang.flag}
-                alt={lang.name}
-                width={20}
-                height={15}
-                className="rounded-sm"
-              />
-              <span className="text-sm">{lang.name}</span>
-            </button>
+            <SelectItem key={lang.code} value={lang.code}>
+              <div className="flex items-center gap-2">
+                <Image
+                  src={lang.flag}
+                  alt={lang.name}
+                  width={30}
+                  height={25}
+                  className="rounded-sm"
+                />
+                <span className="text-sm">{lang.name}</span>
+              </div>
+            </SelectItem>
           ))}
-        </div>
-      )}
+        </SelectContent>
+      </Select>
     </div>
   );
 };

@@ -1,47 +1,41 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import NSContainer from "../ui/core/NSContainer";
-import { usePathname } from "next/navigation";
-import clsx from "clsx";
-import NSButton from "../ui/core/NSButton";
-import Locations from "../Locations";
-import TopBar from "./TopBar";
-import logo from "../../assets/images/nb-sport-logo.png";
 import Image from "next/image";
-import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import notify from "@/assets/icons/message-icon.png";
-import { IoIosNotificationsOutline } from "react-icons/io";
+import { usePathname } from "next/navigation";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X, ChevronDown } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import TopBar from "./TopBar";
+import logo from "@/assets/images/logo.png";
+import LanguageSelector from "../Locations";
 
-const Navbar = () => {
-  // const [country, setCountry] = useState(null);
-  // const [loading, setLoading] = useState(true);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isRole, setIsRole] = useState<string | null>(null);
+const Header = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
 
-  // useEffect(() => {
-  //   fetch("https://restcountries.com/v3.1/region/europe")
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       setCountry(data[0]);
-  //       setLoading(false);
-  //     })
-  //     .catch((err) => {
-  //       console.error("Error fetching country:", err);
-  //       setLoading(false);
-  //     });
-  // }, []);
-
-  // console.log("country------------", country);
-
+  // Handle scroll effect
   useEffect(() => {
-    const storedRole = localStorage.getItem("userRole");
-    setIsRole(storedRole);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 10);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const pathname = usePathname();
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
 
   const navLinks = [
     { href: "/", label: "Home" },
@@ -50,165 +44,240 @@ const Navbar = () => {
     { href: "/how-it-works", label: "How It Works" },
   ];
 
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
-
-  const closeMobileMenu = () => {
-    setIsMobileMenuOpen(false);
-  };
-
   return (
     <>
       <TopBar />
-      <div className="w-full h-[75px] relative">
-        <NSContainer>
-          <div className="mt-2 flex items-center justify-between h-[71px]">
+      <header
+        className={`fixed  left-0 right-0 z-50 transition-all duration-300 ${
+          scrolled ? "bg-white shadow-md py-2 top-0" : "py-4"
+        }`}
+      >
+        <div className="container mx-auto px-4">
+          <div className="flex items-center justify-between">
             {/* Logo */}
-            <div className="w-[50px] h-[50px] md:w-[60px] md:h-[60px] flex-shrink-0">
-              <Image
-                src={logo || "/placeholder.svg"}
-                alt="Logo"
-                className="w-full h-full object-contain"
-                priority
-              />
-            </div>
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+              className="relative z-10"
+            >
+              <Link href="/" className="flex items-center">
+                <div className="w-14 h-14 relative">
+                  <Image
+                    src={logo}
+                    alt="NOBLESPORT"
+                    width={80}
+                    height={80}
+                    className="object-contain"
+                    priority
+                  />
+                </div>
+              </Link>
+            </motion.div>
 
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center gap-6 font-normal text-lg font-openSans">
-              {navLinks.map(({ href, label }) => (
-                <Link
-                  key={href}
-                  href={href}
-                  className={clsx(
-                    "transition-colors duration-200 hover:text-ns-primary",
-                    pathname === href
-                      ? "text-ns-primary font-extrabold"
-                      : "text-ns-foreground font-normal"
-                  )}
+            <nav className="hidden md:flex items-center space-x-8">
+              {navLinks.map((link, index) => (
+                <motion.div
+                  key={link.href}
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 + index * 0.1, duration: 0.5 }}
                 >
-                  {label}
-                </Link>
+                  <Link
+                    href={link.href}
+                    className={`relative font-medium text-base hover:text-green-600 transition-colors ${
+                      pathname === link.href
+                        ? "text-ns-primary font-extrabold"
+                        : "text-gray-700"
+                    }`}
+                  >
+                    {link.label}
+                    {pathname === link.href && (
+                      <motion.div
+                        className="absolute -bottom-1  left-0 right-0 h-0.5 bg-green-600 font-extrabold"
+                        layoutId="navbar-underline"
+                        transition={{
+                          type: "spring",
+                          stiffness: 300,
+                          damping: 30,
+                        }}
+                      />
+                    )}
+                  </Link>
+                </motion.div>
               ))}
-            </div>
+            </nav>
 
             {/* Desktop Actions */}
-            <div className=" flex items-center gap-3 lg:gap-6">
-              {isRole === "player" ||
-              isRole === "venueOwner" ||
-              isRole === "teamManager" ? (
-                <div className=" flex items-center gap-3">
-                  <div>
-                    <Link href={"/messages"}>
-                      <Image
-                        src={notify || "/placeholder.svg"}
-                        alt="Logo"
-                        className=" w-5 h-5 object-cover"
-                        height={80}
-                        width={80}
-                      />
-                    </Link>
-                  </div>
-                  <Link href={"/notifications"}>
-                    <div className="relative">
-                      <IoIosNotificationsOutline size={24} />
-                      <span className="absolute top-0 right-0 block h-2 w-2 rounded-full ring-2 ring-white bg-red-500 animate-ping" />
-                      <span className="absolute top-0 right-0 block h-2 w-2 rounded-full ring-2 ring-white bg-red-500" />
-                    </div>
-                  </Link>
-
-                  <Link href={"/profile"}>
-                    <Avatar>
-                      <AvatarImage src="https://shorturl.at/Ge8HU" />
-                      <AvatarFallback>CN</AvatarFallback>
-                    </Avatar>
-                  </Link>
-                </div>
-              ) : (
-                <div className=" flex items-center gap-4">
-                  <NSButton className="text-ns-primary font-normal bg-transparent text-sm lg:text-base px-3 lg:px-4">
-                    Sign In
-                  </NSButton>
-                  <Link href={"/join-as"}>
-                    <NSButton className="font-normal text-sm lg:text-base px-3 lg:px-4">
-                      Join Now
-                    </NSButton>
-                  </Link>
-                </div>
-              )}
-              <div className="hidden lg:block">
-                <Locations />
-              </div>
+            <div className="hidden md:flex items-center space-x-4">
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5, duration: 0.5 }}
+              >
+                <Link
+                  href="/sign-in"
+                  className=" text-ns-primary hover:text-green-600 transition-colors"
+                >
+                  Sign In
+                </Link>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6, duration: 0.5 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Button className="bg-green-600 hover:bg-green-700 text-white rounded-full">
+                  Join Now
+                </Button>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.7, duration: 0.5 }}
+                className="flex items-center"
+              >
+                <LanguageSelector />
+              </motion.div>
             </div>
 
             {/* Mobile Menu Button */}
-            <button
-              onClick={toggleMobileMenu}
-              className="md:hidden p-2 text-ns-title hover:text-ns-primary transition-colors"
-              aria-label="Toggle mobile menu"
+            <motion.button
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.5, duration: 0.5 }}
+              className="md:hidden relative z-10 p-2 text-gray-700"
+              onClick={() => setIsOpen(!isOpen)}
+              aria-label="Toggle menu"
+              whileTap={{ scale: 0.9 }}
             >
-              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={isOpen ? "close" : "menu"}
+                  initial={{ rotate: isOpen ? -90 : 90, opacity: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  exit={{ rotate: isOpen ? 90 : -90, opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  {isOpen ? <X size={24} /> : <Menu size={24} />}
+                </motion.div>
+              </AnimatePresence>
+            </motion.button>
           </div>
-        </NSContainer>
+        </div>
 
-        {/* Mobile Menu Overlay */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden absolute top-full left-0 right-0 bg-[#F5F5F5] shadow-lg border-t z-50">
-            <NSContainer>
-              <div className="py-4 space-y-4">
-                {/* Mobile Navigation Links */}
-                <div className="space-y-3">
-                  {navLinks.map(({ href, label }) => (
-                    <Link
-                      key={href}
-                      href={href}
-                      onClick={closeMobileMenu}
-                      className={clsx(
-                        "block py-2 px-4 rounded-md transition-colors duration-200",
-                        pathname === href
-                          ? "text-ns-primary font-extrabold bg-ns-primary/10"
-                          : "text-ns-foreground font-normal hover:text-ns-primary hover:bg-gray-50"
-                      )}
+        {/* Mobile Menu - Slides from left to right */}
+        <AnimatePresence>
+          {isOpen && (
+            <>
+              {/* Backdrop */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                className="fixed inset-0 bg-black/50 z-40 md:hidden"
+                onClick={() => setIsOpen(false)}
+              />
+
+              {/* Slide-in menu */}
+              <motion.div
+                initial={{ x: "-100%" }}
+                animate={{ x: 0 }}
+                exit={{ x: "-100%" }}
+                transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                className="fixed top-0 left-0 bottom-0 w-4/5 max-w-xs bg-white z-50 md:hidden shadow-xl"
+              >
+                <div className="flex flex-col h-full">
+                  <div className="p-4 border-b">
+                    <div className="flex items-center justify-between">
+                      <div className="w-14 h-14 relative">
+                        <Image
+                          src={logo}
+                          alt="NOBLESPORT"
+                          width={80}
+                          height={80}
+                          className="object-contain"
+                        />
+                      </div>
+                      <motion.div
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.7, duration: 0.5 }}
+                        className="flex items-center"
+                      >
+                        <LanguageSelector />
+                      </motion.div>
+                    </div>
+                  </div>
+
+                  <nav className="flex-1 overflow-y-auto p-4">
+                    <ul className="space-y-4">
+                      {navLinks.map((link, index) => (
+                        <motion.li
+                          key={link.href}
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{
+                            delay: 0.1 + index * 0.1,
+                            duration: 0.3,
+                          }}
+                        >
+                          <Link
+                            href={link.href}
+                            className={`block py-2 px-3 rounded-md transition-colors ${
+                              pathname === link.href
+                                ? "bg-green-50 text-green-600 font-medium"
+                                : "text-gray-700 hover:bg-gray-50"
+                            }`}
+                            onClick={() => setIsOpen(false)}
+                          >
+                            {link.label}
+                          </Link>
+                        </motion.li>
+                      ))}
+                    </ul>
+                  </nav>
+
+                  <div className="p-4 border-t space-y-4">
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.5, duration: 0.3 }}
                     >
-                      {label}
-                    </Link>
-                  ))}
-                </div>
-
-                {/* Mobile Actions */}
-                <div className="pt-4 border-t space-y-3">
-                  <NSButton
-                    className="w-full text-ns-primary font-normal bg-transparent border border-ns-primary"
-                    onClick={closeMobileMenu}
-                  >
-                    Sign In
-                  </NSButton>
-                  <NSButton
-                    className="w-full font-normal"
-                    onClick={closeMobileMenu}
-                  >
-                    Join Now
-                  </NSButton>
-                  <div className="pt-2">
-                    <Locations />
+                      <Link
+                        href="/sign-in"
+                        className="block w-full py-2 px-4 text-center text-gray-700 border border-gray-300 rounded-md hover:bg-gray-50"
+                        onClick={() => setIsOpen(false)}
+                      >
+                        Sign In
+                      </Link>
+                    </motion.div>
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.6, duration: 0.3 }}
+                    >
+                      <Link
+                        href="/join-now"
+                        className="block w-full py-2 px-4 text-center bg-green-600 text-white rounded-md hover:bg-green-700"
+                        onClick={() => setIsOpen(false)}
+                      >
+                        Join Now
+                      </Link>
+                    </motion.div>
                   </div>
                 </div>
-              </div>
-            </NSContainer>
-          </div>
-        )}
-
-        {/* Mobile Menu Backdrop */}
-        {isMobileMenuOpen && (
-          <div
-            className="md:hidden fixed inset-0 bg-black/20 z-40"
-            onClick={closeMobileMenu}
-          />
-        )}
-      </div>
+              </motion.div>
+            </>
+          )}
+        </AnimatePresence>
+      </header>
     </>
   );
 };
 
-export default Navbar;
+export default Header;
