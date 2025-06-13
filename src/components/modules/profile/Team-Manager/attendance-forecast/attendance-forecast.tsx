@@ -126,7 +126,6 @@ export default function AttendanceForecast() {
               <Select value={selectedPeriod} onValueChange={setSelectedPeriod}>
                 <SelectTrigger className="w-full sm:w-[140px] py-5">
                   <SelectValue />
-                  <ChevronDown className="h-4 w-4 opacity-50" />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="Last week">Last week</SelectItem>

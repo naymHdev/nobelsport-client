@@ -95,9 +95,9 @@ export default function PlayerListsCards() {
             key={player.id}
             className=""
           >
-            <CardContent className="p-6">
+            <CardContent className="md:p-6">
               <div className="flex items-start justify-between mb-4">
-                <div className="flex items-center gap-3">
+                <div className="flex flex-col md:flex-row items-start md:items-center gap-1 md:gap-3">
                   <Avatar className="h-12 w-12">
                     <Image
                       src={profileImg}
@@ -108,11 +108,11 @@ export default function PlayerListsCards() {
                     />
                     <AvatarFallback>{player.initials}</AvatarFallback>
                   </Avatar>
-                  <h3 className=" text-2xl font-bold text-ns-title">
+                  <h3 className=" text-sm md:text-2xl font-bold text-ns-title">
                     {player.name}
                   </h3>
                 </div>
-                <div className="flex flex-col items-end justify-end gap-2">
+                <div className="flex flex-col items-end justify-end md:gap-2">
                   <Link href={`#`}>
                     <Button variant="ghost" size="icon">
                       <IoEye className=" size-5 text-ns-supportive-yellow" />
@@ -121,7 +121,7 @@ export default function PlayerListsCards() {
 
                   <div>
                     {player.badgeStatus == null ? (
-                      <NSButton className="rounded-full px-2 py-1 text-sm bg-blue-100 text-ns-secondary">
+                      <NSButton className="rounded-full px-2 py-1 text-xs md:text-sm bg-blue-100 text-ns-secondary">
                         Add Player
                       </NSButton>
                     ) : (
@@ -131,35 +131,35 @@ export default function PlayerListsCards() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-4 mb-4">
+              <div className="grid grid-cols-2 md:gap-4 gap-2 mb-4">
                 {player.teamName && (
-                  <div className="self-stretch h-16 p-3 bg-ns-light rounded-lg justify-start items-center gap-2">
+                  <div className="self-stretch h-16 md:p-3 p-2 bg-ns-light rounded-lg justify-start items-center gap-2">
                     <p className="text-sm text-gray-500 mb-1">Team Name</p>
-                    <p className="font-medium text-gray-900">
+                    <p className="font-medium text-gray-900 text-xs md:text-sm">
                       {player.teamName}
                     </p>
                   </div>
                 )}
                 {player.accountType && (
-                  <div className="self-stretch h-16 p-3 bg-ns-light rounded-lg justify-start items-center gap-2">
+                  <div className="self-stretch h-16md:p-3 p-2 bg-ns-light rounded-lg justify-start items-center gap-2">
                     <p className="text-sm text-gray-500 mb-1">Account Type</p>
                     <div className="flex items-center gap-2">
                       <div className="h-2 w-2 bg-yellow-500 rounded-full"></div>
-                      <span className="text-yellow-600 font-medium">
+                      <span className="text-yellow-600 font-medium text-xs md:text-sm">
                         {player.accountType}
                       </span>
                     </div>
                   </div>
                 )}
-                <div className="self-stretch h-16 p-3 bg-ns-light rounded-lg justify-start items-center gap-2">
+                <div className="self-stretch h-16 md:p-3 p-2 bg-ns-light rounded-lg justify-start items-center gap-2">
                   <p className="text-sm text-gray-500 mb-1">Position</p>
-                  <p className="font-medium text-gray-900">{player.position}</p>
+                  <p className="font-medium text-gray-900 text-xs md:text-sm">{player.position}</p>
                 </div>
-                <div className="self-stretch h-16 p-3 bg-ns-light rounded-lg justify-start items-center gap-2">
+                <div className="self-stretch h-16 md:p-3 p-2 bg-ns-light rounded-lg justify-start items-center gap-2">
                   <p className="text-sm text-gray-500 mb-1">Status</p>
                   <div className="flex items-center gap-2">
                     <div className="h-2 w-2 bg-green-500 rounded-full"></div>
-                    <span className="text-green-600 font-medium">
+                    <span className="text-green-600 font-medium text-xs md:text-sm">
                       {player.status}
                     </span>
                   </div>
@@ -169,28 +169,28 @@ export default function PlayerListsCards() {
               {/* ------------------- Actions Button ---------------- */}
               <div className="flex gap-2 flex-wrap mt-6">
                 {player.actions.includes("sendRequest") && (
-                  <NSButton className=" flex items-center gap-2 bg-ns-primary text-ns-white rounded-lg px-3">
+                  <NSButton className=" flex items-center gap-2 bg-ns-primary text-ns-white rounded-lg px-3 text-xs md:text-base">
                     <GoPlusCircle className="h-5 w-5" />
                     Send Request
                   </NSButton>
                 )}
                 {player.actions.includes("accept") && (
-                  <NSButton className="bg-green-600 hover:bg-green-700 text-white rounded-lg px-3">
+                  <NSButton className="bg-green-600 hover:bg-green-700 text-white rounded-lg px-3 text-xs md:text-sm">
                     Accept
                   </NSButton>
                 )}
                 {player.actions.includes("reject") && (
-                  <NSButton className="bg-red-600 hover:bg-red-700 rounded-lg px-3">
+                  <NSButton className="bg-red-600 hover:bg-red-700 rounded-lg px-3 text-xs md:text-sm">
                     Reject
                   </NSButton>
                 )}
                 {player.actions.includes("cancel") && (
-                  <NSButton className="bg-red-600 hover:bg-red-700 rounded-lg px-3">
+                  <NSButton className="bg-red-600 hover:bg-red-700 rounded-lg px-3 text-xs md:text-sm">
                     Cancel Request
                   </NSButton>
                 )}
                 {player.actions.includes("message") && (
-                  <NSButton className=" flex items-center rounded-lg px-3 gap-1 bg-ns-secondary">
+                  <NSButton className=" flex items-center rounded-lg px-3 text-xs md:text-sm gap-1 bg-ns-secondary">
                     <AiOutlineMessage className="h-5 w-5" />
                     Message Team
                   </NSButton>

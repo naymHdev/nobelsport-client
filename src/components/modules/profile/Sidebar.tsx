@@ -3,7 +3,7 @@ import SidebarMenus from "./SidebarMenus";
 const ProfileSidebar = () => {
   return (
     <>
-      <div>
+      <div className=" z-50">
         <SidebarMenus />
       </div>
     </>

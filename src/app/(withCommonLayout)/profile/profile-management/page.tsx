@@ -8,7 +8,7 @@ const ProfileManagementPage = () => {
     <>
       <div className=" mb-10">
         {role === "venueOwner" ? <VenueOwnerProfileM /> : <ProfileManagement />}
-        {/* <ProfileManagement /> */}
+
       </div>
     </>
   );

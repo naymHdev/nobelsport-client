@@ -52,17 +52,17 @@ export function MatchCard({ match, ...handlers }: MatchCardProps) {
     switch (match.status) {
       case "upcoming":
         return (
-          <div className="flex gap-2">
+          <div className="flex gap-2 flex-wrap">
             <Button
               size="sm"
-              className="bg-green-600 hover:bg-green-700 hover:cursor-pointer"
+              className="bg-green-600 hover:bg-green-700"
               onClick={() => handlers.onBookVenue?.(match.id)}
             >
               Book Venue
             </Button>
             <Button
               size="sm"
-              className="bg-orange-500 hover:bg-orange-600 hover:cursor-pointer"
+              className="bg-orange-500 hover:bg-orange-600"
               onClick={() => handlers.onSendLineup?.(match.id)}
             >
               Send Line-up
@@ -71,10 +71,9 @@ export function MatchCard({ match, ...handlers }: MatchCardProps) {
         );
       case "unpublished":
         return (
-          <div className="flex gap-2">
+          <div className="flex gap-2 flex-wrap">
             <Link href={`/profile/match-management/team-balance`}>
               <Button
-                className="hover:cursor-pointer"
                 size="sm"
                 variant="default"
                 onClick={() => handlers.onViewBalance?.(match.id)}
@@ -86,7 +85,6 @@ export function MatchCard({ match, ...handlers }: MatchCardProps) {
               <Button
                 size="sm"
                 variant="default"
-                className="hover:cursor-pointer"
                 onClick={() => handlers.onPublishMatch?.(match.id)}
               >
                 Publish Match
@@ -96,17 +94,17 @@ export function MatchCard({ match, ...handlers }: MatchCardProps) {
         );
       case "archived":
         return (
-          <div className="flex gap-2">
+          <div className="flex gap-2 flex-wrap">
             <Button
               size="sm"
-              className="bg-green-600 hover:bg-green-700 hover:cursor-pointer"
+              className="bg-green-600 hover:bg-green-700"
               onClick={() => handlers.onMarkCompleted?.(match.id)}
             >
               Mark as Completed
             </Button>
             <Button
               size="sm"
-              className="bg-purple-600 hover:bg-purple-700 hover:cursor-pointer"
+              className="bg-purple-600 hover:bg-purple-700"
               onClick={() => handlers.onWriteAnnouncements?.(match.id)}
             >
               Write Match Announcements
@@ -115,12 +113,11 @@ export function MatchCard({ match, ...handlers }: MatchCardProps) {
         );
       case "completed":
         return (
-          <div className=" flex gap-2">
+          <div className="flex gap-2 flex-wrap">
             <Link href={`/profile/match-management/set-player-performance`}>
               <Button
                 size="sm"
                 variant="default"
-                className="hover:cursor-pointer"
                 onClick={() => handlers.onViewPerformance?.(match.id)}
               >
                 Set Player's Performance
@@ -130,7 +127,7 @@ export function MatchCard({ match, ...handlers }: MatchCardProps) {
               <Button
                 size="sm"
                 variant="default"
-                className=" bg-ns-supportive-yellow text-white hover:bg-ns-supportive-yellow/80 hover:cursor-pointer"
+                className="bg-ns-supportive-yellow text-white hover:bg-ns-supportive-yellow/80"
                 onClick={() => handlers.onViewPerformance?.(match.id)}
               >
                 Set Winner
@@ -144,50 +141,51 @@ export function MatchCard({ match, ...handlers }: MatchCardProps) {
   };
 
   return (
-    <Card className="w-full shadow-none">
+    <Card className="w-full shadow-none border rounded-md">
       <CardContent className="p-4">
-        <div className="flex items-center justify-between mb-4">
+        <div className="flex items-start md:items-center justify-between mb-4 gap-4">
           <div className="flex items-center gap-4 flex-1">
-            <div className="flex items-center gap-3">
+            <div className="flex flex-col md:flex-row items-center gap-3">
               <Avatar className="h-10 w-10">
                 <Image
                   src={fbLogo}
                   alt="fb-logo"
                   width={100}
                   height={100}
-                  className=" w-10 h-10 object-cover rounded-lg"
+                  className="w-10 h-10 object-cover rounded-lg"
                 />
                 <AvatarFallback>
                   {match.homeTeam.name.slice(0, 2)}
                 </AvatarFallback>
               </Avatar>
-              <span className="font-semibold text-2xl text-ns-title">
+              <span className="font-semibold text-xs md:text-xl text-ns-title">
                 {match.homeTeam.name}
               </span>
             </div>
 
-            <span className="text-lg font-bold text-gray-600">VS</span>
+            <span className="md:text-lg font-bold text-gray-600">VS</span>
 
-            <div className="flex items-center gap-3">
-              <span className="font-semibold text-2xl text-ns-title">
-                {match.awayTeam.name}
-              </span>
-              <Avatar className="h-10 w-10">
+            <div className="flex flex-col md:flex-row items-center gap-3">
+              <Avatar className="h-10 w-10 order-first md:order-last">
                 <Image
                   src={fbLogo}
                   alt="fb-logo"
                   width={100}
                   height={100}
-                  className=" w-10 h-10 object-cover rounded-lg"
+                  className="w-10 h-10 object-cover rounded-lg"
                 />
                 <AvatarFallback>
                   {match.awayTeam.name.slice(0, 2)}
                 </AvatarFallback>
               </Avatar>
+
+              <span className="font-semibold text-xs md:text-xl text-ns-title">
+                {match.awayTeam.name}
+              </span>
             </div>
           </div>
 
-          <div className="flex items-center">
+          <div className="flex items-center gap-2 -mt-8 md:-mt-0">
             <Link href={`/profile/match-management/match-details`}>
               <Button variant="ghost" size="icon" className="h-8 w-8">
                 <Eye className="h-4 w-4 text-yellow-500" />
@@ -201,7 +199,7 @@ export function MatchCard({ match, ...handlers }: MatchCardProps) {
 
         {getStatusBadge() && <div className="mb-3">{getStatusBadge()}</div>}
 
-        <div className="flex items-center gap-4 text-sm text-gray-600 mb-4">
+        <div className="flex flex-wrap gap-4 text-sm text-gray-600 mb-4">
           <div className="flex items-center gap-1">
             <Calendar className="h-4 w-4" />
             <span>{match.date}</span>
@@ -216,7 +214,9 @@ export function MatchCard({ match, ...handlers }: MatchCardProps) {
           </div>
         </div>
 
-        <div className="flex justify-start">{getActionButtons()}</div>
+        <div className="flex justify-start flex-wrap gap-2">
+          {getActionButtons()}
+        </div>
       </CardContent>
     </Card>
   );

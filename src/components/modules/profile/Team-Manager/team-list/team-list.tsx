@@ -1,11 +1,15 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
-import { Calendar, ChevronLeft, ChevronRight } from "lucide-react";
+import React, { useState, useEffect, useCallback } from "react";
+import {
+  Calendar,
+  ChevronDownIcon,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { cn } from "@/lib/utils";
 import { useDebounce } from "@/hooks/use-debounce";
 import NSButton from "@/components/ui/core/NSButton";
 import { mockTeams, Team } from "./constant";
@@ -125,10 +129,6 @@ export default function MyTeamList() {
                 value={filterDate}
                 onChange={(e) => setFilterDate(e.target.value)}
                 className="w-full pr-10 px-2 py-5"
-              />
-              <Calendar
-                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400"
-                size={18}
               />
             </div>
             <div className=" flex-1 w-full">

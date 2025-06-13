@@ -24,6 +24,7 @@ import clubLogo from "@/assets/images/Dragons FC logo.png";
 import Image from "next/image";
 import NSInput from "@/components/ui/core/NSInput";
 import { AiOutlineMessage } from "react-icons/ai";
+import { Input } from "@/components/ui/input";
 
 interface Match {
   id: number;
@@ -176,10 +177,12 @@ export default function MatchManagementAllMatchList() {
                 </SelectContent>
               </Select>
 
-              <Button variant="outline" className=" py-5">
-                <Calendar className="w-4 h-4 mr-2" />
-                Filter by Date
-              </Button>
+              <div className="flex items-center gap-2 w-full">
+                <Input
+                  type="date"
+                  className="w-full py-5 px-2 focus:outline-none focus-visible:ring-0 focus-visible:border-neutral-200 shadow-none"
+                />
+              </div>
 
               <Select value={seasonFilter} onValueChange={setSeasonFilter}>
                 <SelectTrigger className="w-full py-5">
@@ -215,25 +218,25 @@ export default function MatchManagementAllMatchList() {
 
                   {/* Teams */}
                   <div className="flex items-center gap-4">
-                    <div className="flex items-center gap-3">
+                    <div className="flex flex-col items-center gap-3">
                       <Image
                         src={clubLogo}
                         alt={`${match.homeTeam} logo`}
-                        className="w-10 h-10 rounded-full border-gray-200"
+                        className="rounded-full border-gray-200"
                       />
-                      <span className=" font-semibold text-2xl text-ns-title">
+                      <span className=" font-bold md:font-semibold text-xs md:text-2xl text-ns-title">
                         {match.homeTeam}
                       </span>
                     </div>
-                    <span className="text-gray-500 font-semibold">Vs</span>
-                    <div className="flex items-center gap-3">
-                      <span className=" font-semibold text-2xl text-ns-title">
+                    <span className="text-gray-500 font-extrabold">Vs</span>
+                    <div className="flex flex-col items-center gap-3">
+                      <span className=" font-bold md:font-semibold text-xs md:text-2xl text-ns-title order-last">
                         {match.awayTeam}
                       </span>
                       <Image
                         src={clubLogo}
                         alt={`${match.awayTeam} logo`}
-                        className="w-10 h-10 rounded-full border-gray-200"
+                        className=" border-gray-200"
                       />
                     </div>
                   </div>

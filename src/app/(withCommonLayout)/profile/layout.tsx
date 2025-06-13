@@ -4,7 +4,7 @@ import NSContainer from "@/components/ui/core/NSContainer";
 const ProfileLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <NSContainer>
-      <h2 className="text-2xl font-bold text-ns-title font-openSans my-6">
+      <h2 className="text-2xl font-bold text-ns-title font-openSans mt-24 mb-6">
         My Profile
       </h2>
       <div className="lg:flex min-h-screen lg:gap-8">

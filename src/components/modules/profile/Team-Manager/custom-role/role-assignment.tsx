@@ -17,7 +17,6 @@ import {
 } from "@/components/ui/dialog";
 import profileImg from "@/assets/images/john_smith.png";
 import Image from "next/image";
-import NSButton from "@/components/ui/core/NSButton";
 import RoleAssignModal from "./assign-role-modal";
 
 interface User {
@@ -192,7 +191,9 @@ export default function RoleAssignment() {
       <div className="">
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
-          <h1 className="text-2xl font-bold text-gray-900">Role Assignment</h1>
+          <h1 className="md:text-2xl text-lg font-semibold md:font-bold text-gray-900">
+            Role Assignment
+          </h1>
 
           <Dialog
             open={isAssignDialogOpen}

@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { ChevronDown } from "lucide-react";
 import bd from "../assets/icons/bangladesh.png";
 import usa from "../assets/icons/usa-flag.png";
 import fr from "../assets/icons/france.png";
@@ -42,8 +41,8 @@ const LanguageSelector = () => {
           <Image
             src={selected.flag}
             alt={selected.name}
-            width={40}
-            height={40}
+            width={45}
+            height={45}
             className="rounded-sm"
           />
           <span className="text-sm">{selected.name}</span>

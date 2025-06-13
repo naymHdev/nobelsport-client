@@ -23,11 +23,11 @@ const MatchDetails = ({ matchData }: { matchData: TMatch }) => {
         <section className=" -mt-20">
           <Card className=" border-none shadow-none">
             <CardHeader>
-              <div className=" flex items-center justify-between">
+              <div className=" flex items-start justify-between">
                 <h1 className="lg:text-3xl text-xl font-semibold lg:font-bold font-openSans text-ns-title">
                   {match_title}
                 </h1>
-                <button className="flex items-center justify-center text-center bg-[#D1FAE5] text-ns-primary text-sm md:text-base px-3 md:px-4 py-1.5 md:py-2 rounded-full font-openSans font-semibold hover:bg-[#b7f4d4] transition-all duration-200">
+                <button className=" bg-[#D1FAE5] text-ns-primary text-xs md:text-base px-3 md:px-4 py-1.5 md:py-2 rounded-full font-openSans font-semibold hover:bg-[#b7f4d4] transition-all duration-200">
                   {match_status}
                 </button>
               </div>

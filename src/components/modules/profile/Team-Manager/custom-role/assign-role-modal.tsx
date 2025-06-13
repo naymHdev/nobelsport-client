@@ -38,9 +38,9 @@ export default function RoleAssignModal() {
     <div className="flex items-center justify-center  bg-gray-100">
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>
-          <NSButton className="flex text-sm md:text-base items-center gap-2 rounded-lg px-3">
-            <Plus className=" size-6" />
-            Assign Role
+          <NSButton className="flex text-xs md:text-base items-center gap-1 md:gap-2 rounded-lg px-3">
+            <Plus className=" size-4 md:size-6" />
+            <span>Assign Role</span>
           </NSButton>
         </DialogTrigger>
         <DialogContent className="sm:max-w-md">

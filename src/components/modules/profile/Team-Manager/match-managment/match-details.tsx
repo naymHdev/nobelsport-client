@@ -8,31 +8,23 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import clubLogo from "@/assets/images/Dragons FC logo.png";
 import Link from "next/link";
+import NSBackButton from "@/components/ui/core/NSBackButton";
 
 export function ManagementMatchDetails() {
   const router = useRouter();
 
   return (
     <>
-      <Card className=" border-none shadow-none bg-white/70 font-openSans">
-        <CardHeader className=" flex gap-3">
-          <Button
-            size="icon"
-            onClick={() => router.back()}
-            className="mr-2 rounded-full bg-[#F8F8F8CC] text-ns-title hover:bg-[#ddd9d9cc] hover:cursor-pointer"
-          >
-            <ArrowLeft className=" size-6" />
-          </Button>
-          <h1 className="text-2xl font-bold">Match Details</h1>
-        </CardHeader>
+      <Card className=" border-none shadow-none bg-white/70 font-openSans px-3 md:px-6">
+        <NSBackButton label="Match Details" />
 
         {/* ----------- Content goes here ----------- */}
-        <CardContent className=" bg-white/80 m-6 py-6 rounded-lg">
+        <CardContent className=" bg-white/80 md:m-6 py-6 rounded-lg">
           <div className=" flex items-center justify-between">
-            <h1 className=" text-xl md:text-3xl font-semibold md:font-bold text-ns-title leading-8">
+            <h1 className=" text-lg md:text-xl lg:text-3xl font-semibold md:font-bold text-ns-title leading-8">
               Dragons FC vs Phoenix United
             </h1>
-            <NSButton className=" text-orange-400 bg-orange-100">
+            <NSButton className=" text-orange-400 bg-orange-100 text-xs md:text-base">
               Scheduled
             </NSButton>
           </div>
@@ -108,7 +100,7 @@ export function ManagementMatchDetails() {
           </div>
 
           <section className="mt-6 flex flex-col md:flex-row gap-2">
-            <div className=" bg-white p-6 rounded-lg flex-1">
+            <div className=" bg-white md:p-6 rounded-lg flex-1">
               <h2 className=" text-xl md:text-3xl font-semibold md:font-bold text-ns-title leading-8">
                 Dragons FC
               </h2>
@@ -130,7 +122,7 @@ export function ManagementMatchDetails() {
                 </div>
               </div>
             </div>
-            <div className=" bg-white p-6 rounded-lg flex-1">
+            <div className=" bg-white md:p-6 rounded-lg flex-1">
               <h2 className=" text-xl md:text-3xl font-semibold md:font-bold text-ns-title leading-8">
                 Dragons FC
               </h2>
@@ -154,14 +146,17 @@ export function ManagementMatchDetails() {
         </CardContent>
 
         {/* ------------------ Buttons ---------------- */}
-        <section className="flex items-center justify-between gap-6 px-6">
+        <section className="flex items-center justify-between gap-6 md:px-6">
           <Link href="/venue/1" className="w-full">
-            <NSButton className="w-full bg-ns-primary text-white uppercase font-bold rounded-lg py-4">
+            <NSButton className="w-full bg-ns-primary text-white uppercase font-bold rounded-lg py-4 text-xs md:text-base">
               Book Venue
             </NSButton>
           </Link>
-          <Link href="/profile/match-management/team-details" className="w-full">
-            <NSButton className="w-full bg-orange-400 text-white uppercase font-bold rounded-lg py-4">
+          <Link
+            href="/profile/match-management/team-details"
+            className="w-full"
+          >
+            <NSButton className="w-full bg-orange-400 text-white uppercase font-bold rounded-lg py-4 text-xs md:text-base">
               Team Line up
             </NSButton>
           </Link>

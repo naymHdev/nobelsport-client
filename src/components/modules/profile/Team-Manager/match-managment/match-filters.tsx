@@ -28,14 +28,14 @@ export function MatchFilters({
   };
 
   return (
-    <div className="flex flex-wrap items-center gap-4 bg-white rounded-lg">
-      <div className="relative flex-1 min-w-[200px]">
+    <div className="flex flex-wrap md:flex-nowrap items-center gap-4 bg-white rounded-lg">
+      <div className="relative w-full">
         <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
         <Input
           placeholder="Search"
           value={filters.search}
           onChange={(e) => updateFilter("search", e.target.value)}
-          className="pl-10 py-5 focus:outline-none focus-visible:ring-0 focus-visible:border-neutral-200 shadow-none"
+          className="pl-10 py-5 focus:outline-none focus-visible:ring-0 focus-visible:border-neutral-200 shadow-none w-full"
         />
       </div>
 
@@ -43,7 +43,7 @@ export function MatchFilters({
         value={filters.status}
         onValueChange={(value) => updateFilter("status", value)}
       >
-        <SelectTrigger className="w-[140px] py-5 shadow-none">
+        <SelectTrigger className=" w-full py-5 shadow-none">
           <SelectValue placeholder="All Status" />
         </SelectTrigger>
         <SelectContent>
@@ -55,12 +55,12 @@ export function MatchFilters({
         </SelectContent>
       </Select>
 
-      <div className="flex items-center gap-2">
+      <div className="flex w-full items-center gap-2">
         <Input
           type="date"
           value={filters.date}
           onChange={(e) => updateFilter("date", e.target.value)}
-          className="w-[140px] py-5 px-2 focus:outline-none focus-visible:ring-0 focus-visible:border-neutral-200 shadow-none"
+          className=" w-full py-5 px-2 focus:outline-none focus-visible:ring-0 focus-visible:border-neutral-200 shadow-none"
         />
       </div>
 
@@ -68,7 +68,7 @@ export function MatchFilters({
         value={filters.matchType}
         onValueChange={(value) => updateFilter("matchType", value)}
       >
-        <SelectTrigger className="w-[140px] py-5 shadow-none">
+        <SelectTrigger className=" w-full py-5 shadow-none">
           <SelectValue placeholder="Single Match" />
         </SelectTrigger>
         <SelectContent>

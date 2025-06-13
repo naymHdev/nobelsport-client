@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import TopBar from "./TopBar";
 import logo from "@/assets/images/logo.png";
@@ -49,7 +49,7 @@ const Header = () => {
       <TopBar />
       <header
         className={`fixed  left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled ? "bg-white shadow-md py-2 top-0" : "py-4"
+          scrolled ? "bg-white shadow-md py-2 top-0" : "bg-gray-50 py-4"
         }`}
       >
         <div className="container mx-auto px-4">
@@ -130,9 +130,11 @@ const Header = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Button className="bg-green-600 hover:bg-green-700 text-white rounded-full">
-                  Join Now
-                </Button>
+                <Link href="/join-as">
+                  <Button className="bg-green-600 hover:bg-green-700 text-white rounded-full">
+                    Join Now
+                  </Button>
+                </Link>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, y: -10 }}
@@ -262,7 +264,7 @@ const Header = () => {
                       transition={{ delay: 0.6, duration: 0.3 }}
                     >
                       <Link
-                        href="/join-now"
+                        href="/join-as"
                         className="block w-full py-2 px-4 text-center bg-green-600 text-white rounded-md hover:bg-green-700"
                         onClick={() => setIsOpen(false)}
                       >
