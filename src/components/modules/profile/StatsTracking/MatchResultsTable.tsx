@@ -105,7 +105,7 @@ export default function MatchResultsTable() {
   return (
     <Card className="shadow-none border-none bg-transparent p-0">
       <CardContent className="p-0">
-        <div className="rounded-lg overflow-hidden">
+        <div className="rounded-lg overflow-hidden border-none">
           <Table>
             <TableHeader>
               <TableRow className=" bg-ns-primary hover:bg-green-600">

@@ -3,7 +3,7 @@ import TeamAndMatchHistory from "@/components/modules/profile/TeamAndMatchHistor
 const TeamAndMatchHistoryPage = () => {
   return (
     <>
-      <div className=" mb-10">
+      <div className="mb-10">
         <TeamAndMatchHistory />
       </div>
     </>

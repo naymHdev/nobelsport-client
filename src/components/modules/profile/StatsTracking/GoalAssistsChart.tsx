@@ -35,7 +35,7 @@ const GoalAssistsChart = () => {
             </div>
           </CardHeader>
           <CardContent>
-            <div className="h-64">
+            <div className="h-64 w-full mx-auto">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart
                   data={goalsAssistsData}

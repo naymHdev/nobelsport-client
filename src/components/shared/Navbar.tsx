@@ -5,16 +5,28 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Bell, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import TopBar from "./TopBar";
 import logo from "@/assets/images/logo.png";
 import LanguageSelector from "../Locations";
+import profileImg from "@/assets/images/john_smith.png";
+import messageIcon from "@/assets/icons/message-icon.png";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [isRole, setIsRole] = useState<string | null>(null);
+
   const pathname = usePathname();
+
+  useEffect(() => {
+    const storedRole = localStorage.getItem("userRole");
+    setIsRole(storedRole);
+  }, []);
+
+  const role = isRole;
+  console.log("role", role);
 
   // Handle scroll effect
   useEffect(() => {
@@ -111,31 +123,83 @@ const Header = () => {
 
             {/* Desktop Actions */}
             <div className="hidden md:flex items-center space-x-4">
-              <motion.div
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5, duration: 0.5 }}
-              >
-                <Link
-                  href="/sign-in"
-                  className=" text-ns-primary hover:text-green-600 transition-colors"
-                >
-                  Sign In
-                </Link>
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6, duration: 0.5 }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Link href="/join-as">
-                  <Button className="bg-green-600 hover:bg-green-700 text-white rounded-full">
-                    Join Now
-                  </Button>
-                </Link>
-              </motion.div>
+              {role === "player" ||
+              role === "teamManager" ||
+              role === "venueOwner" ? (
+                <>
+                  <div className="flex items-center justify-center gap-6">
+                    {/* Status Icon */}
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5 }}
+                      className="relative"
+                    >
+                      <Image
+                        src={messageIcon}
+                        alt="Message Icon"
+                        width={50}
+                        height={50}
+                        className="w-6 h-6 text-gray-600"
+                      />
+                    </motion.div>
+
+                    {/* Notification Bell */}
+                    <motion.div
+                      className="relative"
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5 }}
+                    >
+                      <Bell className="w-6 h-6 text-gray-600 stroke-2" />
+                      <div className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full flex items-center justify-center">
+                        <span className="text-white text-xs font-semibold">
+                          2
+                        </span>
+                      </div>
+                    </motion.div>
+
+                    {/* Profile Picture */}
+                    <div className="w-8 h-8 rounded-full overflow-hidden">
+                      <Image
+                        src={profileImg}
+                        alt="Profile picture"
+                        width={64}
+                        height={64}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.5, duration: 0.5 }}
+                  >
+                    <Link
+                      href="/sign-in"
+                      className=" text-ns-primary hover:text-green-600 transition-colors"
+                    >
+                      Sign In
+                    </Link>
+                  </motion.div>
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.6, duration: 0.5 }}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <Link href="/join-as">
+                      <Button className="bg-green-600 hover:bg-green-700 text-white rounded-full">
+                        Join Now
+                      </Button>
+                    </Link>
+                  </motion.div>
+                </>
+              )}
               <motion.div
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -245,32 +309,84 @@ const Header = () => {
                   </nav>
 
                   <div className="p-4 border-t space-y-4">
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.5, duration: 0.3 }}
-                    >
-                      <Link
-                        href="/sign-in"
-                        className="block w-full py-2 px-4 text-center text-gray-700 border border-gray-300 rounded-md hover:bg-gray-50"
-                        onClick={() => setIsOpen(false)}
-                      >
-                        Sign In
-                      </Link>
-                    </motion.div>
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.6, duration: 0.3 }}
-                    >
-                      <Link
-                        href="/join-as"
-                        className="block w-full py-2 px-4 text-center bg-green-600 text-white rounded-md hover:bg-green-700"
-                        onClick={() => setIsOpen(false)}
-                      >
-                        Join Now
-                      </Link>
-                    </motion.div>
+                    {role === "player" ||
+                    role === "teamManager" ||
+                    role === "venueOwner" ? (
+                      <>
+                        <div className="flex items-center justify-end gap-6">
+                          {/* Status Icon */}
+                          <motion.div
+                            initial={{ opacity: 0, y: -10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5 }}
+                            className="relative"
+                          >
+                            <Image
+                              src={messageIcon}
+                              alt="Message Icon"
+                              width={50}
+                              height={50}
+                              className="w-6 h-6 text-gray-600"
+                            />
+                          </motion.div>
+
+                          {/* Notification Bell */}
+                          <motion.div
+                            className="relative"
+                            initial={{ opacity: 0, y: -10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5 }}
+                          >
+                            <Bell className="w-6 h-6 text-gray-600 stroke-2" />
+                            <div className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full flex items-center justify-center">
+                              <span className="text-white text-xs font-semibold">
+                                2
+                              </span>
+                            </div>
+                          </motion.div>
+
+                          {/* Profile Picture */}
+                          <div className="w-8 h-8 rounded-full overflow-hidden">
+                            <Image
+                              src={profileImg}
+                              alt="Profile picture"
+                              width={64}
+                              height={64}
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                        </div>
+                      </>
+                    ) : (
+                      <>
+                        <motion.div
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 0.5, duration: 0.3 }}
+                        >
+                          <Link
+                            href="/sign-in"
+                            className="block w-full py-2 px-4 text-center text-gray-700 border border-gray-300 rounded-md hover:bg-gray-50"
+                            onClick={() => setIsOpen(false)}
+                          >
+                            Sign In
+                          </Link>
+                        </motion.div>
+                        <motion.div
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 0.6, duration: 0.3 }}
+                        >
+                          <Link
+                            href="/join-as"
+                            className="block w-full py-2 px-4 text-center bg-green-600 text-white rounded-md hover:bg-green-700"
+                            onClick={() => setIsOpen(false)}
+                          >
+                            Join Now
+                          </Link>
+                        </motion.div>
+                      </>
+                    )}
                   </div>
                 </div>
               </motion.div>

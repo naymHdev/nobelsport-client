@@ -79,7 +79,7 @@ export default function MatchList() {
     switch (status) {
       case "accepted":
         return (
-          <div className="flex gap-2">
+          <div className="flex flex-wrap md:flex-nowrap gap-2">
             <Button size="sm" className=" bg-ns-primary hover:bg-green-600">
               Accept
             </Button>
@@ -97,7 +97,7 @@ export default function MatchList() {
         );
       case "send-request":
         return (
-          <div className="flex gap-2">
+          <div className="flex flex-wrap md:flex-nowrap gap-2">
             <Button size="sm" className=" bg-ns-primary hover:bg-green-600">
               Accept
             </Button>
@@ -115,7 +115,7 @@ export default function MatchList() {
         );
       case "pending":
         return (
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap md:flex-nowrap gap-2">
             <Button
               variant="destructive"
               size="sm"
@@ -130,7 +130,7 @@ export default function MatchList() {
         );
       case "completed":
         return (
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap md:flex-nowrap gap-2">
             <Button
               variant="destructive"
               size="sm"
@@ -189,7 +189,7 @@ export default function MatchList() {
         </div>
 
         {/* Pagination */}
-        <div className="flex items-center justify-end gap-2 p-6">
+        <div className="flex items-center justify-center md:justify-end gap-2 p-6">
           <Button
             variant="outline"
             size="icon"
