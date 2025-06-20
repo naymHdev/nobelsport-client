@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { CgProfile } from "react-icons/cg";
+import { CgMenuRound, CgProfile } from "react-icons/cg";
 import { ImStatsBars } from "react-icons/im";
 import {
   IoBookOutline,
@@ -11,7 +11,7 @@ import {
 } from "react-icons/io5";
 import { LuCrown, LuUserPen } from "react-icons/lu";
 import { usePathname } from "next/navigation";
-import { HiMiniBars3BottomRight, HiOutlineCamera } from "react-icons/hi2";
+import { HiOutlineCamera } from "react-icons/hi2";
 import Image from "next/image";
 import { TbHomeStats, TbSmartHome } from "react-icons/tb";
 import { AiOutlineBars } from "react-icons/ai";
@@ -220,11 +220,11 @@ const SidebarMenus = () => {
     <>
       {/* Mobile Hamburger Button */}
       <button
-        className="lg:hidden z-[100] p-2 focus:outline-none text-ns-title"
+        className="lg:hidden z-[100] p-2 focus:outline-none text-ns-title/90"
         onClick={() => setIsOpen((open) => !open)}
         aria-label={isOpen ? "Close sidebar menu" : "Open sidebar menu"}
       >
-        <HiMiniBars3BottomRight size={24} />
+        <CgMenuRound size={24} />
       </button>
 
       {/* Sidebar */}
