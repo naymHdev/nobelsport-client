@@ -5,7 +5,7 @@ import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { format } from "date-fns";
-import { CalendarIcon, ArrowLeft } from "lucide-react";
+import { CalendarIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
@@ -33,6 +33,7 @@ import {
 } from "@/components/ui/popover";
 import { Calendar } from "@/components/ui/calendar";
 import NSButton from "@/components/ui/core/NSButton";
+import NSBackButton from "@/components/ui/core/NSBackButton";
 
 // Mock data for teams and venues
 const teams = [
@@ -110,19 +111,13 @@ export default function CreateMatchForm() {
 
   return (
     <div className="p-6 bg-white rounded-lg">
-      <div className="flex items-center mb-6">
-        <Button
-          size="icon"
-          onClick={() => router.back()}
-          className="mr-2 rounded-full bg-[#F8F8F8CC] text-ns-title hover:bg-[#ddd9d9cc] hover:cursor-pointer"
-        >
-          <ArrowLeft className=" size-6" />
-        </Button>
-        <h1 className="text-2xl font-bold">Create Team</h1>
-      </div>
+      <NSBackButton label="Create Team" />
 
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="mt-4 md:mt-8 space-y-6"
+        >
           <FormField
             control={form.control}
             name="matchName"
@@ -219,6 +214,35 @@ export default function CreateMatchForm() {
                           {venue.name}
                         </SelectItem>
                       ))}
+                    </SelectContent>
+                  </Select>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="venueId"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Match Formation</FormLabel>
+                  <Select
+                    onValueChange={field.onChange}
+                    defaultValue={field.value}
+                  >
+                    <FormControl>
+                      <SelectTrigger className=" w-full py-5 shadow-none">
+                        <SelectValue placeholder="Select Formation" />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      {["4-4-2", "4-3-3", "3-5-2", "4-2-3-1", "3-4-3"].map(
+                        (formation) => (
+                          <SelectItem key={formation} value={formation}>
+                            {formation}
+                          </SelectItem>
+                        )
+                      )}
                     </SelectContent>
                   </Select>
                   <FormMessage />

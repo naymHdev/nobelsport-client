@@ -56,19 +56,19 @@ const Footer = () => {
               <div className=" mt-[18px] space-y-[15px] flex flex-col">
                 <Link
                   className=" font-normal leading-4 text-[16px] hover:text-ns-secondary"
-                  href="#"
+                  href="/"
                 >
                   Home
                 </Link>
                 <Link
                   className=" font-normal leading-4 text-[16px] hover:text-ns-secondary"
-                  href="#"
+                  href="/venue"
                 >
                   Find Venues
                 </Link>
                 <Link
                   className=" font-normal leading-4 text-[16px] hover:text-ns-secondary"
-                  href="#"
+                  href="/matches"
                 >
                   Join Matches
                 </Link>

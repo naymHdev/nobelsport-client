@@ -35,7 +35,7 @@ export default function MatchListPage() {
         <Link href={"/profile/match-management/create-team"}>
           <Button className="bg-green-600 hover:bg-green-700">
             <Plus className="h-4 w-4 mr-2" />
-            Create Team
+            Create Match
           </Button>
         </Link>
       </div>
