@@ -1,3 +1,4 @@
+import Advertisement from "@/components/modules/home/advertisement";
 import Banner from "@/components/modules/home/Banner";
 import JoinNowBanner from "@/components/modules/home/JoinNowBanner";
 import JoinOurSiteSection from "@/components/modules/home/JoinTheMatch";
@@ -11,6 +12,7 @@ export default function Home() {
       <div className=" space-y-24 mb-20">
         <Banner />
         <SportsVenue />
+        <Advertisement />
         <JoinOurSiteSection />
         <ThreeSteps />
         <Testimonials />

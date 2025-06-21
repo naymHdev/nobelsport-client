@@ -24,7 +24,7 @@ const NSSectionTitle = ({
 
       <div
         className="mt-6 sm:mt-8 gap-2 lg:gap-4 text-center
-        font-bebas font-bold capitalize tracking-normal"
+        font-bebas font-bold tracking-normal uppercase"
       >
         <span
           className="text-transparent bg-gradient-to-br from-[#007A33] to-[#0032A0] bg-clip-text

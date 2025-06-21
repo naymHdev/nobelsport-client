@@ -1,7 +1,6 @@
-import NSContainer from "@/components/ui/core/NSContainer";
+import Link from "next/link";
 import banner from "../../../assets/images/h-banner-with-image.png";
 import Image from "next/image";
-import NSButton from "@/components/ui/core/NSButton";
 
 const Banner = () => {
   return (
@@ -37,9 +36,11 @@ const Banner = () => {
               </p>
 
               {/* Call to Action Button */}
-              <button className="bg-[#FFB81C] hover:bg-[#e6a519] transition-colors duration-200 text-[#E1E8F0] font-bold text-sm sm:text-base md:text-lg lg:text-xl uppercase px-6 sm:px-8 md:px-12 py-3 sm:py-4 md:py-5 rounded-md tracking-tight shadow-lg hover:shadow-xl transform hover:scale-105 ">
-                Explore Matches
-              </button>
+              <Link href={"/matches"}>
+                <button className="bg-[#FFB81C] hover:bg-[#e6a519] transition-colors duration-200 text-[#E1E8F0] font-bold text-sm sm:text-base md:text-lg lg:text-xl uppercase px-6 sm:px-8 md:px-12 py-3 sm:py-4 md:py-5 rounded-md tracking-tight shadow-lg hover:shadow-xl transform hover:scale-105 ">
+                  Explore Matches
+                </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -51,9 +52,11 @@ const Banner = () => {
           </p>
 
           {/* Call to Action Button */}
-          <button className="bg-[#FFB81C] hover:bg-[#e6a519] transition-colors duration-200 text-[#E1E8F0] font-bold text-sm sm:text-base md:text-lg lg:text-xl uppercase px-6 sm:px-8 md:px-12 py-3 sm:py-4 md:py-5 rounded-md tracking-tight shadow-lg hover:shadow-xl transform hover:scale-105 ">
-            Explore Matches
-          </button>
+          <Link href={"/matches"}>
+            <button className="bg-[#FFB81C] hover:bg-[#e6a519] transition-colors duration-200 text-[#E1E8F0] font-bold text-sm sm:text-base md:text-lg lg:text-xl uppercase px-6 sm:px-8 md:px-12 py-3 sm:py-4 md:py-5 rounded-md tracking-tight shadow-lg hover:shadow-xl transform hover:scale-105 ">
+              Explore Matches
+            </button>
+          </Link>
         </div>
       </div>
     </>

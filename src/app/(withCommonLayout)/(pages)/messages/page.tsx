@@ -27,16 +27,18 @@ interface Message {
   time: string;
   sent: boolean;
   reaction?: string;
+  senderId: string;
 }
 
 const contacts: Contact[] = [
   {
     id: "1",
     name: "Ronald Richards",
-    avatar: "https://shorturl.at/Ge8HU",
+    avatar:
+      "https://res.cloudinary.com/dgrg4lmww/image/upload/v1750521838/cody_pztde1.png",
     lastMessage: "haha oh man 🔥",
     time: "12m",
-    online: false,
+    online: true,
   },
   {
     id: "2",
@@ -49,7 +51,8 @@ const contacts: Contact[] = [
   {
     id: "3",
     name: "Leslie Alexander",
-    avatar: "https://shorturl.at/Ge8HU",
+    avatar:
+      "https://res.cloudinary.com/dgrg4lmww/image/upload/v1750521787/sarah_qhxmsd.png",
     lastMessage: "perfect!",
     time: "5h",
     online: false,
@@ -67,90 +70,105 @@ const contacts: Contact[] = [
 const messages: Message[] = [
   {
     id: "1",
+    senderId: "user1",
     content: "omg, this is amazing",
     time: "2:30 PM",
     sent: false,
   },
   {
     id: "2",
+    senderId: "user1",
     content: "perfect! ✅",
     time: "2:31 PM",
     sent: false,
   },
   {
     id: "3",
+    senderId: "user1",
     content: "Wow, this is really epic",
     time: "2:32 PM",
     sent: false,
   },
   {
     id: "4",
+    senderId: "user2",
     content: "How are you?",
     time: "2:35 PM",
     sent: true,
   },
   {
     id: "5",
+    senderId: "user2",
     content: "just ideas for next time",
     time: "2:40 PM",
     sent: false,
   },
   {
     id: "6",
+    senderId: "user2",
     content: "I'll be there in 2 mins ⏰",
     time: "2:41 PM",
     sent: false,
   },
   {
     id: "7",
+    senderId: "user3",
     content: "woohoooo",
     time: "2:45 PM",
     sent: true,
   },
   {
     id: "8",
+    senderId: "user3",
     content: "Haha oh man",
     time: "2:46 PM",
     sent: true,
   },
   {
     id: "9",
+    senderId: "user3",
     content: "Haha that's terrifying 😱",
     time: "2:47 PM",
     sent: true,
   },
   {
     id: "10",
+    senderId: "user3",
     content: "aww",
     time: "2:50 PM",
     sent: false,
   },
   {
     id: "11",
+    senderId: "currentUserId123",
     content: "omg, this is amazing",
     time: "2:51 PM",
     sent: false,
   },
   {
     id: "12",
+    senderId: "currentUserId123",
     content: "woohoooo 🔥",
     time: "2:52 PM",
     sent: false,
   },
   {
     id: "13",
+    senderId: "currentUserId123",
     content: "woohoooo",
     time: "2:55 PM",
     sent: true,
   },
   {
     id: "14",
+    senderId: "currentUserId123",
     content: "Haha oh man",
     time: "2:56 PM",
     sent: true,
   },
   {
     id: "15",
+    senderId: "currentUserId123",
     content: "Haha that's terrifying 😱",
     time: "2:57 PM",
     sent: true,
@@ -235,9 +253,7 @@ export default function MessagingApp() {
                       {contact.time}
                     </span>
                   </div>
-                  <p className="text-sm text-muted-foreground truncate">
-                    {contact.lastMessage}
-                  </p>
+                  <p className="text-sm ">{contact.lastMessage}</p>
                 </div>
               </motion.div>
             ))}

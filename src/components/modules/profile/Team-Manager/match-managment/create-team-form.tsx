@@ -111,7 +111,7 @@ export default function CreateMatchForm() {
 
   return (
     <div className="p-6 bg-white rounded-lg">
-      <NSBackButton label="Create Team" />
+      <NSBackButton label="Create Match" />
 
       <Form {...form}>
         <form
