@@ -205,7 +205,7 @@ const GroupMessage = () => {
       {/* Mobile Sidebar Overlay */}
       {sidebarOpen && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
+          className="fixed inset-0 bg-gray-200 text-black lg:hidden"
           onClick={() => setSidebarOpen(false)}
         />
       )}
