@@ -45,7 +45,7 @@ const Banner = () => {
           </div>
         </div>
         {/* Description */}
-        <div className=" absolute bottom-10 left-1/9 hidden xl:block ">
+        <div className=" absolute bottom-10 left-1/9 hidden xl:block z-50">
           <p className="text-sm text-start sm:text-base md:text-lg text-white/90 leading-relaxed font-normal max-w-md mb-6 md:mb-8">
             Play Smarter. Connect Faster. NobleSport makes organizing and
             joining community sports events easier than ever.
